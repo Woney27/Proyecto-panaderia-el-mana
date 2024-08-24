@@ -3,9 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title> Panaderia El Maná </title>
 </head>
 <body>
-    
+    <h1>Panaderia El Maná</h1>
+    <h2>Gestión a Proveedores</h2>
+    <Br>
+    <form>
+        <fieldset>
+            <legend>Registro de pedido a Proveedor</legend>
+            <label for="proveedor">Nombre del Proveedor:</label><Br>
+            <input type="text" id="proveedor" name="proveedor" placeholder="Ingrese el nombre del proveedor" required>
+            <Br><Br>
+            <label for="nombre del producto/insumo">Nombre del producto/insumo:</label><Br>
+            <input type="text" id="nombre del producto/insumo" name="nombre del producto/insumo" placeholder="Ingrese el nombre del producto/insumo..." required>
+            <Br><Br>
+            <label for="cantidad producto/insumo">Cantidad de productos/insumos:</label><Br>
+            <input type="number" id="cantidad producto/insumo" name="cantidad" placeholder="Ingrese la cantidad..." min="1" max="500" step="1" required>
+            <Br><Br>
+            <label for="fecha de solicitud">Fecha de solicitud:</label><Br>
+            <input type="datetime-local" id="fecha de solicitud" name="fecha de solicitud" placeholder="Ingrese la fecha de emisión..." required>
+            <Br><Br>
+            <label for="numero de pedido">Número de pedido:</label><Br>
+            <input type="number" id="numero de pedido" name="numero de pedido" placeholder="Ingrese el número de pedido..." min="1" step="1" required>
+            <Br><Br>
+            <Label for="Observación adicional">Observación adicional sobrel el pedido/insumo:</Label><Br>
+            <input type="text" id="Observación adicional" name="obeservación adicional" placeholder="Ingrese una descripción..."
+            <Br><Br><Br>
+            <button type="submit">Registrar</button>
+            <button type="reset">Cancelar</button>
+        </fieldset>
+    </form>
+    <footer>
+        <p>&copy; 2024 Panadería El Maná. Todos los derechos reservados de autor.</p>
+    </footer>
 </body>
 </html>
