@@ -4,68 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panaderia El Maná</title>
+    <link rel="stylesheet" href="../css/estilos-productos.css">
 </head>
 <body>
+    <img src="../img/panaderia-el-mana3.png" class="imagen-logo">
    
-    <h1>Panaderia El Maná</h1>
-    <h2>Gestión de productos</h2>
+    <h1>Gestión de productos</h1>
+    <div class="barra-nav">
+         <nav>
+            <a href="PaginaPortada.html">Menú</a>
+            <a href="pedidos_proveedores.html">Pedidos</a>
+            <a href="gestion_ventas.html">Ventas</a>
+            <a href="registro_productos.html">Productos</a>
+        </nav>
+    </div>
 
-    <nav>
-        <a href="PaginaPortada.html">Menú</a>
-        <a href="pedidos_proveedores.html">Pedidos</a>
-        <a href="gestion_ventas.html">Ventas</a>
-    </nav>
-    <br><br>
+    <div class="formularios">
 
-    <form action="#">
-        <fieldset>
-            <legend>Agregar / editar producto</legend>
-            <label for="cod-producto">Código de producto</label>
-            <br>
-            <input type="text" id="cod-producto" required>
-            <br><br>
-            <label for="descrip-producto">Descrición de producto</label>
-            <br>
-            <textarea name="descrip-producto" rows="3" cols="20" required></textarea>
-            <br><br>
-            <label for="precio">Precio</label>
-            <br>
-            <input type="number" id="precio" min="0" step="0.01">
-            <br><br>
-            <label for="cantidad">Cantidad disponible</label>
-            <br>
-            <input type="number" id="cantidad" min="0">
-            <br><br>
-            <label for="categoriaProduc">Categoría de producto</label>
-            <br>
-            <input list="categoria" id="categoriaProduc">
-            <datalist id="categoria">
-                <option value="Panificación">
-                <option value="Pastelería">
-            </datalist>
-            <br><br>
-            <input type="submit" name="guardar" value="Guardar">
-            <input type="reset" name="cancelar" value="Cancelar">
-        </fieldset>
-        <br><br>
-    </form>
+        <div class="form-agregar-producto">
+            <form action="#">
+                <fieldset>
+                    <legend>Agregar producto</legend>
+                    <label for="cod-producto">Código de producto</label>
+                    <input type="text" id="cod-producto" required>
+                    <br><br>
+                    <label for="descrip-producto">Descrición de producto</label>
+                    <textarea name="descrip-producto" rows="3" cols="20" required></textarea>
+                    <br><br>
+                    <label for="precio">Precio</label>
+                    <input type="number" id="precio" min="0" step="0.01">
+                    <br><br>
+                    <label for="cantidad">Cantidad disponible</label>
+                    <input type="number" id="cantidad" min="0">
+                    <br><br>
+                    <label for="categoriaProduc">Categoría de producto</label>
+                    <input list="categoria" id="categoriaProduc">
+                    <datalist id="categoria">
+                        <option value="Panificación">
+                        <option value="Pastelería">
+                    </datalist>
+                    <br><br>
+                    <button class="boton-registrar" type="submit"> Guardar</button>
+                    <button class="boton-cancelar" type="reset"> Cancelar </button>
+                </fieldset>
+            </form>
+        </div>
+        
+
+        <div class="form-modif-producto">
+            <form action="#">
+                <fieldset>
+                    <legend>Modificar producto</legend>
+                    <label for="cod-producto">Código de producto</label>
+                    <input type="text" id="cod-producto" required>
+                    <br><br>
+                    <label for="descrip-producto">Descrición de producto</label>
+                    <input type="text" id="descrip-producto">
+                    <br><br>
+                    <button class="boton-registrar" type="submit"> Buscar</button>
+                    <button class="boton-cancelar" type="reset"> Cancelar </button>
+                </fieldset>
+            </form>
+        </div>
     
-    <form action="#">
-        <fieldset>
-            <legend>Eliminar producto</legend>
-            <label for="cod-producto">Código de producto</label>
-            <br>
-            <input type="text" id="cod-producto" required>
-            <br><br>
-            <label for="descrip-producto">Descrición de producto</label>
-            <br>
-            <input type="text" id="descrip-producto">
-            <br><br>
-            <input type="submit" name="eliminar" value="Eliminar">
-            <input type="reset" name="cancelar" value="Cancelar">
-        </fieldset>
-    </form>
 
+        <div class="form-eliminar-producto">
+            <form action="#">
+                <fieldset>
+                    <legend>Eliminar producto</legend>
+                    <label for="cod-producto">Código de producto</label>
+                    <input type="text" id="cod-producto" required>
+                    <br><br>
+                    <label for="descrip-producto">Descrición de producto</label>
+                    <input type="text" id="descrip-producto">
+                    <br><br>
+                    <button class="boton-registrar" type="submit"> Eliminar</button>
+                    <button class="boton-cancelar" type="reset"> Cancelar </button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
     <footer>
         <p>&copy; 2024 Panadería El Maná. Todos los derechos reservados de autor.</p>
     </footer>
