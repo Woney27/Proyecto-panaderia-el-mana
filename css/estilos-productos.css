@@ -1,0 +1,110 @@
+body{
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("../img/fondo1.jfif");
+}
+
+h1{
+    color: rgb(255, 253, 251); 
+    font-size: 60px; 
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
+    margin: 30px; 
+    font-family: Georgia;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+}
+
+
+
+.imagen-logo{
+    display: block;
+    height: auto;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.formularios{
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
+    gap: 100px; 
+}
+
+fieldset {
+    padding: 20px;
+    border: none;
+}
+
+legend {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+label{
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, textarea{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #000; /* Color del texto de los inputs */
+    background-color: #ffffff; /* Fondo blanco para los inputs */
+}
+
+.form-agregar-producto{ 
+    padding-top: 20px;
+    background-color: #421c12;
+    border-radius: 10px;
+    color: #e0e0e0;
+}
+
+.form-modif-producto{
+    padding-top: 20px;
+    background-color: #421c12;
+    border-radius: 5px;
+    color: #e0e0e0;
+}
+
+.form-eliminar-producto{
+    padding-top: 20px;
+    background-color: #421c12;
+    border-radius: 5px;
+    color: #e0e0e0;
+}
+
+button {
+    background-color: #5e2f03;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.boton-cancelar:hover {
+    background-color: #f01707;
+}
+
+.boton-registrar:hover {
+    background-color: rgb(6, 180, 64);
+}
+
+footer{
+    display: block;
+    background-color: #ffffff;
+    margin: 30px;
+    padding: 1px;
+    border-radius: 20px;
+    text-align: center;
+}
