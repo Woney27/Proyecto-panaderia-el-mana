@@ -70,7 +70,7 @@ legend {
 }
 
 button:hover {
-    transform: scale(1.05); /* Efecto de agrandamiento al pasar el mouse */
+    transform: scale(1.05);
 }
 
 .button-group {
@@ -149,7 +149,10 @@ footer{
 .nav-item {
     margin: 0 15px; /* Espacio entre cada item del menú */
 }
-
+.u{
+    color: white;
+    text-align: center;
+}
 .navbar-nav .nav-item .nav-link {
     color: #fff;
     padding: 10px 15px;
