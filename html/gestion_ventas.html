@@ -1,62 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="es-AR">
     <head>
-        <title> Gestion de Ventas - Panaderia el mane</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gestión de Ventas - Panadería El Maná</title>
         <link rel="stylesheet" href="../css/estilos-venta.css">
     </head>
     <body>
-        <img src="../img/panaderia-el-mana3.png" alt="Logo de la panaderia">
-        <h1> Registro de Ventas </h1>
-        <div class="formulario">
-        <form action="" method="get">
-            <fieldset> <!--es una forma cómoda de crear grupos de controles de formulario (también denominados widgets ) que comparten el mismo propósito, con fines semánticos y de aplicación de estilo. -->
-                <legend>Formulario de Venta </legend> <!--describe formalmente el propósito del elemento -->
-                <label for="producto"> Producto </label>
-                <select id="pruducto" name="producto_id" required>
-                    <option value="" disabled selected> Seleccione un producto:</option>
-                    <option value="1"> Pan </option>
-                    <option value="2"> Galletas </option>
-                    <option value="3"> Torta</option>
-                </select>
-                <br> <br>
-                <label for="cantidad"> Cantidad </label>
-                <input type="number" id="cantidad" name="cantidad" step="1" min="1">
-                <br> <br>
+        <header>
+            <img src="../img/panaderia-el-mana3.png" alt="Logo de Panadería El Maná">
+        </header>
+        <nav class="barra-nav navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="PaginaPortada.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="registro_productos.html">Gestión de Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pedidos_proveedores.html">Pedidos a Proveedores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gestion_ventas.html">Gestión de Ventas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="clientes_mayoristas.html">Clientes Mayoristas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reportes.html">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contactos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <h1>Registro de Ventas</h1>
+            <section class="formulario">
+                <form action="" method="get">
+                    <fieldset>
+                        <legend>Formulario de Venta</legend>
 
-                <label for="precio_unitario">Precio Unitario:</label>
-                <input type="number" id="precio_unitario" name="precio_unitario" step="0.01" min="0.01" required>
-                <br><br>
+                        <label for="producto">Producto</label>
+                        <select id="producto" name="producto_id" required>
+                            <option value="" disabled selected>Seleccione un producto:</option>
+                            <option value="1">Pan</option>
+                            <option value="2">Galletas</option>
+                            <option value="3">Torta</option>
+                        </select>
 
-                <label for="cliente"> Cliente </label>
-                <input type="text" id="cliente" name="cliente" required>
-                <br><br>
+                        <label for="cantidad">Cantidad</label>
+                        <input type="number" id="cantidad" name="cantidad" step="1" min="1" required>
 
-                <label for="vendedor"> Vendedor</label>
-                <select id="vendedor" name="vendedor" required>
-                    <option value="" disabled selected> Seleccione un vendedor </option>
-                    <option value="1"> Sheila </option>
-                    <option value="2"> Lautaro</option>
-                    <option value="3"> Guillermo</option>
-                </select>
-                <br><br>
+                        <label for="cliente">Cliente</label>
+                        <input type="text" id="cliente" name="cliente" required>
 
-                <label for="fecha_hora"> Fecha y hora de venta</label>
-                <input type="datetime-local" id="fecha_hora" name="fecha_hora" required>
-                <br><br>
+                        <label for="vendedor">Vendedor</label>
+                        <select id="vendedor" name="vendedor" required>
+                            <option value="" disabled selected>Seleccione un vendedor</option>
+                            <option value="1">Sheila</option>
+                            <option value="2">Lautaro</option>
+                            <option value="3">Guillermo</option>
+                        </select>
 
-                <label for="numero_pedido"> Número de pedido</label>
-                <input type="number" id="numero_pedido" name="numero_pedido" step="1" min="1" required>
-                <br><br>
+                        <label for="fecha_hora">Fecha y hora de venta</label>
+                        <input type="datetime-local" id="fecha_hora" name="fecha_hora" required>
 
-                <label for="observaciones"> Observaciones </label>
-                <textarea id="observaciones" name="observaciones"> </textarea>
-                <br><br>
+                        <label for="numero_pedido">Número de pedido</label>
+                        <input type="number" id="numero_pedido" name="numero_pedido" step="1" min="1" required>
 
-                <button class="boton-registrar" type="submit"> Registrar venta</button>
-                <button class="boton-cancelar" type="reset"> Cancelar Venta</button>
+                        <label for="observaciones">Observaciones</label>
+                        <textarea id="observaciones" name="observaciones"></textarea>
 
-            </fieldset>
-        </form>
-    </div>
+                        <button class="boton-registrar" type="submit" aria-label="Registrar la venta">Registrar venta</button>
+                        <button class="boton-cancelar" type="reset" aria-label="Cancelar la venta">Cancelar Venta</button>
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 Panadería El Maná. Todos los derechos reservados de autor.</p>
+        </footer>
     </body>
 </html>
