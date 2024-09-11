@@ -2,12 +2,19 @@ body{
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url("../img/fondo1.jfif");
+    background-image: url("../img/fondo4.jpeg");
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-h1{
-    color: rgb(255, 253, 251); 
-    font-size: 60px; 
+.imagen-menu{
+    width: 100%;
+    display:block;
+}
+
+.titulo{
+    color: rgb(225, 225, 225); 
+    font-size: 40px; 
     text-shadow: 2px 2px 4px rgb(0, 0, 0);
     margin: 30px; 
     font-family: Georgia;
@@ -16,18 +23,46 @@ h1{
     text-decoration: underline;
 }
 
-.imagen-logo{
-    display: block;
-    height: auto;
-    width: 100%;
-    margin-top: 20px;
+/* Estilos para la barra de navegación */
+.navbar {
+    background-color: #421c12; /* Fondo oscuro */
+    display: flex; /* Alinea los elementos en una barra horizontal */
+    justify-content: center; /* Centra los elementos de la barra */
+    padding: 15px 0; /*Ajusta el padding para darle más espacio vertical */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para mayor profundidad */
+}
+
+.navbar-nav {
+    display: flex; /* Hace que los items de la barra se distribuyan horizontalmente */
+    list-style: none; /* Elimina los puntos de la lista */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin: 0 15px; /* Espacio entre cada item del menú */
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: #421c12; /* Color de fondo al pasar el mouse */
+    border-radius: 5px; /* Borde redondeado para un efecto más suave */
+    transform: scale(1.05); /* Efecto de agrandamiento al pasar el mouse */
+    color: #f2a900; /* Cambia el color del texto al pasar el mouse */
 }
 
 .formularios{
     display: flex;
-    justify-content: center; 
-    align-items: flex-start; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 100px; 
+    justify-content: center;
 }
 
 fieldset {
@@ -44,50 +79,59 @@ legend {
 }
 
 label{
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-family: sans-serif;
+    margin: 5px;
 }
 
 input, textarea{
-    width: 100%;
+    display: flex;
+    width: 90%;
     padding: 10px;
     border-radius: 5px;
-    box-sizing: border-box;
-    color: #000; /* Color del texto de los inputs */
-    background-color: #ffffff; /* Fondo blanco para los inputs */
+    background-color: #ffffff; 
 }
 
+
 .form-agregar-producto{ 
-    padding-top: 20px;
-    background-color: #421c12;
+    background-color: rgba(66, 28, 18, 0.8);
     border-radius: 10px;
-    color: #e0e0e0;
+    padding: 30px 30px ;
+    font-weight: bold;
+    color: white;
 }
 
 .form-modif-producto{
-    padding-top: 20px;
-    background-color: #421c12;
-    border-radius: 5px;
-    color: #e0e0e0;
+    padding: 30px 30px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(66, 28, 18, 0.8); 
+    border-radius: 10px;
 }
 
 .form-eliminar-producto{
-    padding-top: 20px;
-    background-color: #421c12;
-    border-radius: 5px;
+    padding: 30px 30px ;
+    background-color: rgba(66, 28, 18, 0.8); 
+    border-radius: 10px;
     color: #e0e0e0;
+    font-weight: bold;
 }
 
 button {
     background-color: #5e2f03;
     color: #fff;
     padding: 10px 20px;
-    margin: 10px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
     font-size: 15px;
+}
+
+.boton-registrar{
+    margin: 0 30px;
+}
+
+.boton-cancelar, .boton-registrar{
+
+    border-radius: 10px;
 }
 
 .boton-cancelar:hover {
@@ -99,10 +143,98 @@ button {
 }
 
 footer{
-    display: block;
-    background-color: #ffffff;
-    margin: 30px;
-    padding: 1px;
+    display: flex;
+    background-color: #3E1C13;
+    color: white;
+    margin-top: 50px;
+    padding-top: 10px;
     border-radius: 20px;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2em;
+    }
+  
+    .formularios {
+      grid-template-columns: 1fr;
+    }
+  
+    form {
+      padding: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.5em;
+    }
+  
+    .navbar {
+      flex-direction: column;
+    }
+  
+    .nav-item a {
+      font-size: 1em;
+    }
+  
+    form {
+      padding: 10px;
+    }
+  
+    .boton-registrar, .boton-cancelar {
+      font-size: 0.9em;
+      padding: 8px 15px;
+    }
+  }
+
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .barra-nav {
+        padding-bottom: 120px; /* Ajuste el padding para dispositivos móviles */
+        background-size: contain; /* Ajusta el fondo para pantallas pequeñas */
+        border-width: 2px;
+    }
+
+    .nav-items {
+        flex-direction: column; /* Apila los elementos verticalmente */
+        align-items: center; /* Centra los elementos cuando se apilan */
+        margin-bottom: 20px;
+    }
+
+    ul {
+        flex-direction: column;
+        gap: 10px; /* Agrega espacio entre los elementos */
+    }
+
+    li > a {
+        font-size: 16px; /* Tamaño de fuente más pequeño para móviles */
+    }
+}
+
+/* Media query para pantallas medianas */
+@media (max-width: 768px) {
+    .barra-nav {
+        background-size: cover; /* Sigue cubriendo el área disponible */
+        padding-bottom: 180px; /* Ajusta el padding para pantallas medianas */
+    }
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 480px) {
+    .barra-nav {
+        background-size: contain; /* La imagen se ajusta sin recortarse */
+        background-position: center; /* Asegura que la imagen esté centrada */
+        padding-bottom: 120px; /* Ajusta el padding para pantallas más pequeñas */
+    }
 }
