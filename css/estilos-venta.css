@@ -145,6 +145,7 @@ button:hover {
     transform: scale(1.05); /* Efecto de agrandamiento al pasar el mouse */
 }
 
+
 .boton-cancelar:hover {
     background-color: #f01707;
 }
@@ -164,3 +165,4 @@ footer{
     justify-content: center;
     align-items: center;
 }
+
