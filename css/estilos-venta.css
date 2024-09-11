@@ -4,7 +4,7 @@ body {
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
-    background-image: url(../img/fondo4.jpeg);
+    background-image: url(../img/fondo4.jpg);
     background-size: cover; /* Ajusta la imagen de fondo para que cubra toda la pantalla */
     background-attachment: fixed; /* La imagen de fondo permanece fija */
     background-position: center; /* Centra la imagen de fondo */
@@ -156,10 +156,13 @@ button:hover {
 }
 
 /* Footer */
-footer {
-    margin-top: auto;
-    text-align: center;
-    padding: 10px;
-    background-color: #533c3c;
+footer{
+    display: flex;
+    background-color: #3E1C13;
     color: white;
+    margin-top: 50px;
+    padding-top: 10px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
 }

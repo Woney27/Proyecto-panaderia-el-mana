@@ -3,7 +3,7 @@ body{
     margin: 0;
     padding: 0;
   
-    background-image: url("../img/fondo4.jpeg");
+    background-image: url("../img/fondo4.jpg");
 
     background-size: cover;
     background-attachment: fixed;
@@ -194,8 +194,8 @@ footer{
     }
   
     .boton-registrar, .boton-cancelar {
-      font-size: 0.9em;
-      padding: 8px 15px;
+    font-size: 0.9em;
+    padding: 8px 15px;
     }
   }
 
