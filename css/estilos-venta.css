@@ -11,14 +11,12 @@ body {
 }
 
 h1 {
-    color: rgb(255, 253, 251); /* Color del título */
-    font-size: 3em; /* Ajusta el tamaño del texto según prefieras */
-    text-shadow: 2px 2px 4px rgb(0, 0, 0); /* Añade un sombreado al texto para mayor legibilidad */
-    margin: 0; /* Asegúrate de que no haya espacio debajo del título principal */
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight: bold;
-    text-align: center;
     text-decoration: underline;
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+    margin-top: 20px;
 }
 
 /* Estilos para el encabezado */
@@ -70,7 +68,7 @@ header img {
 
 /* Estilos para el formulario */
 form {
-    background-color: #421c12; /* Fondo del formulario */
+    background-color: rgba(66, 28, 18, 0.8); /* Fondo del formulario */
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(158, 155, 155, 0.1);
@@ -133,7 +131,7 @@ textarea:focus {
 }
 
 button {
-    background-color: #5e2f03;
+    background-color:#855940;
     color: #fff; /* Color del texto del botón */
     padding: 10px 20px;
     border: none;
