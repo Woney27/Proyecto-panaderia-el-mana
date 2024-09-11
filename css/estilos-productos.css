@@ -2,9 +2,7 @@ body{
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-  
     background-image: url("../img/fondo4.jpg");
-
     background-size: cover;
     background-attachment: fixed;
 }
@@ -15,14 +13,12 @@ body{
 }
 
 .titulo{
-    color: rgb(225, 225, 225); 
-    font-size: 40px; 
-    text-shadow: 2px 2px 4px rgb(0, 0, 0);
-    margin: 30px; 
-    font-family: Georgia;
-    font-weight: bold;
-    text-align: center;
     text-decoration: underline;
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+    margin-top: 20px;
 }
 
 /* Estilos para la barra de navegación */
@@ -119,12 +115,17 @@ input, textarea{
 }
 
 button {
-    background-color: #5e2f03;
+    background-color:#855940;
     color: #fff;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
     font-size: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05); /* Efecto de agrandamiento al pasar el mouse */
 }
 
 .boton-registrar{
