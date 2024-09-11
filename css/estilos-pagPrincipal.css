@@ -9,23 +9,19 @@ body {
     background-repeat: no-repeat;  
     background-attachment: fixed; 
 }
-section p{
-
-}
 
 .container.mt-3 {
     display: flex;
-    justify-content: center;  /* Centra horizontalmente el contenido */
-    align-items: center;      /* Centra verticalmente el contenido */
-    flex-direction: column;   /* Asegura que el contenido esté en columna (uno debajo del otro) */
-            /* Ocupa toda la altura de la ventana para centrar verticalmente */
+    justify-content: center; 
+    align-items: center;      
+    flex-direction: column;   
 }
 
-/* Estilo de la tarjeta */
+
 .card {
     width: 700px;
     display: flex;
-    justify-content: center;  /* Opcional: puedes ajustar si necesitas centrar el contenido dentro de la tarjeta */
+    justify-content: center; 
 }
 footer{
     background: #855940;
@@ -42,7 +38,7 @@ footer{
     left: 50%;
     color: white;
     text-align: center;
-    text-shadow: 2px 2px 4px white; /* Añade un sombreado al texto para mayor legibilidad */
+    text-shadow: 2px 2px 4px white; 
     border-top: 1px solid white;
 }
 
@@ -58,33 +54,33 @@ footer{
 header h1 {
     color: black;
     height: 70px;
-    width: 100%; /* Ajusta el ancho al 100% */
+    width: 100%;
     text-align: left;
     line-height: 70px;
-    font-size: 5vw; /* Ajustable según el ancho de la pantalla */
-    text-shadow: 2px 2px 4px rgb(0, 0, 0); /* Añade un sombreado al texto para mayor legibilidad */
+    font-size: 5vw; 
+    text-shadow: 2px 2px 4px rgb(0, 0, 0); 
     padding-bottom: 80px;
     border-bottom: 1px solid black;
 }
 
-/* Media Queries para ajustar el tamaño en pantallas pequeñas */
+
 @media (max-width: 768px) {
     .carousel-caption h3 {
-        font-size: 8vw; /* Tamaño del texto más grande en pantallas pequeñas */
+        font-size: 8vw; 
     }
 
     .carousel-caption p {
-        font-size: 5vw; /* Ajuste para pantallas pequeñas */
+        font-size: 5vw; 
     }
 
     header h1 {
-        font-size: 6vw; /* Ajuste del título en pantallas pequeñas */
+        font-size: 6vw; 
     }
 }
 
-/* Personalización del estilo del navbar */
+
 .navbar {
-    background-color: #855940; /* Cambia el fondo del navbar */
+    background-color: #855940; 
 }
 
 .navbar-nav .nav-link {
@@ -94,11 +90,11 @@ header h1 {
 }
 
 .navbar-nav .nav-link:hover {
-    background-color: white; /* Color de hover */
+    background-color: white; 
     color: black;
 }
 
-/* Ajustes para pantallas más pequeñas */
+
 @media (max-width: 992px) {
     .navbar-nav .nav-link {
         font-size: 16px;
