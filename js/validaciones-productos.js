@@ -1,57 +1,59 @@
-class Producto{
-    constructor(descripProducto, precio, cantidadDisp, categoria){
-        this.descripProducto = descripProducto;
-        this.precio = precio;
-        this.cantidadDisp = cantidadDisp;
-        this.categoria = cantegoria;
+class Producto {
+    constructor(descripcion, unidadMedida, precio, cantDispo, categoria) {
+        this.descripcion = descripcion;
+        this.unidadMedida = unidadMedida;
+        this.precio = parseFloat(precio);
+        this.cantDispo = parseInt(cantDispo);
+        this.categoria = categoria;
     }
 
-    eliminarProducto(fila) {
-        fila.remove();
+    eliminarReserva(listaProductos) {
+        const index = listaProductos.indexOf(this);
+        if (index > -1) {
+            listaProductos.splice(index, 1);
+        }
     }
 }
 
 let productos = [];
 
-document.addEventListener('DOMContentLoaded',function(){
-
+document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('form-producto').addEventListener('submit', function(event) {
-        event.preventDefault(); 
+        event.preventDefault();
 
-        let descripProducto = document.getElementById('descrip-producto').value;
-        let precio = document.getElementById('precio').value;
-        let cantidadDisp = document.getElementById('cantidad').value;
-        let categoria = document.getElementById('categoriaProduc').value;
+        let descripcion = document.getElementById("descrip-producto").value;
+        let unidadMedida = document.getElementById("unidad-medida").value;
+        let precio = document.getElementById("precio").value;
+        let cantDispo = document.getElementById("cantidad").value;
+        let categoria = document.getElementById("categoriaProduc").value;
 
-        let producto = new Producto(descripProducto, precio, cantidadDisp, categoria);
-
+        let producto = new Producto(descripcion, unidadMedida, precio, cantDispo, categoria);
         productos.push(producto);
 
-        actualizarTabla();
+        mostrarProductos();
+        this.reset(); // Limpiar el formulario después de guardar
     });
 
+    function mostrarProductos() {
+        let tablaProductos = document.getElementById("productos").querySelector('tbody');
+        tablaProductos.innerHTML = ""; // Limpiar la tabla antes de actualizarla
 
-    function actualizarTabla() {
-        let tablaProducto = document.getElementById('productos');
-        let cuerpoTabla = document.getElementById('tbody');
-
-        productos.forEach(producto => {
-            let fila = document.createElement('tr');
-
-            fila.innerHTML =`
-            <td>${producto.descripProducto}</td>
-            <td>${producto.precio}</td>
-            <td>${producto.cantidadDisp}</td>
-            <td>${producto.cantegoria}</td>
+        productos.forEach((producto, index) => {
+            let fila = tablaProductos.insertRow();
+            fila.innerHTML = `
+                <td>${producto.descripcion}</td>
+                <td>${producto.unidadMedida}</td>
+                <td>${producto.precio.toFixed(2)}</td>
+                <td>${producto.cantDispo}</td>
+                <td>${producto.categoria}</td>
+                <td><button class="btn btn-danger" onclick="eliminarReserva(${index})">Eliminar</button></td>
             `;
-            cuerpoTabla.appendChild(document.createElement('fila'))
         });
-        tablaProducto.appendChild(cuerpoTabla);
     }
 
-    function eliminarReserva(index, boton) {
-            productos.splice(index, 1); // Eliminar reserva del array
-            actualizarTabla(); // Actualizar la tabla después de eliminar
+    window.eliminarReserva = function(index) {
+        productos.splice(index, 1);
+        mostrarProductos(); // Actualizar la tabla después de eliminar
     };
 });

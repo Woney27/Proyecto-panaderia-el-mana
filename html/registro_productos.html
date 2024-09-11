@@ -57,7 +57,14 @@
                 <fieldset>
                     <legend>Agregar producto</legend>
                     <label for="descrip-producto">Descrición de producto</label>
-                    <textarea id="descrip-producto" name="descrip-producto" rows="3" cols="20" required></textarea>
+                    <textarea id="descrip-producto"  rows="3" cols="20" required></textarea>
+                    <br><br>
+                    <label for="unidad-medida">Unidad / medida</label><br>
+                    <select id="unidad-medida" >
+                        <option value="Kilogramos">Kilogramos</option>
+                        <option value="Gramos">Gramos</option>
+                        <option value="Unidad">Unidad</option>
+                    </select>
                     <br><br>
                     <label for="precio">Precio</label>
                     <input type="number" id="precio" min="0" step="0.01" required>
@@ -77,7 +84,6 @@
                 </fieldset>
             </form>
         </div>
-        
 
         <div>
             <form class="form-modif-producto" action="#">
@@ -86,7 +92,34 @@
                     <label for="descrip-producto">Descrición de producto</label>
                     <textarea name="descrip-producto" rows="2" cols="15" required></textarea>
                     <br><br>
-                    <button class="boton-registrar" type="submit"> Buscar</button>
+                    <button class="boton-buscar" type="submit"> Buscar</button>
+
+                    <br><br>
+
+                    <label for="descrip-producto">Descrición de producto</label>
+                    <textarea id="descrip-producto-modif" rows="3" cols="20" required></textarea>
+                    <br><br>
+                    <label for="unidad-medida">Unidad / medida</label><br>
+                    <select id="unidad-medida-modif" >
+                        <option value="Kilogramos">Kilogramos</option>
+                        <option value="Gramos">Gramos</option>
+                        <option value="Unidad">Unidad</option>
+                    </select>
+                    <br><br>
+                    <label for="precio">Precio</label>
+                    <input type="number" id="precio-modif" min="0" step="0.01" required>
+                    <br><br>
+                    <label for="cantidad">Cantidad disponible</label>
+                    <input type="number" id="cantidad-modif" min="0" required>
+                    <br><br>
+                    <label for="categoriaProduc">Categoría de producto</label>
+                    <input list="categoria" id="categoriaProduc-modif" required>
+                    <datalist id="categoria">
+                        <option value="Panificación">
+                        <option value="Pastelería">
+                    </datalist>
+                    <br>
+                    <button class="boton-registrar" type="submit"> Guardar</button>
                     <button class="boton-cancelar" type="reset"> Cancelar </button>
                 </fieldset>
             </form>
@@ -96,11 +129,8 @@
             <form class="form-eliminar-producto" action="#">
                 <fieldset>
                     <legend>Eliminar producto</legend>
-                    <label for="cod-producto">Código de producto</label>
-                    <input type="text" id="cod-producto" required>
-                    <br><br>
                     <label for="descrip-producto">Descrición de producto</label>
-                    <input type="text" id="descrip-producto">
+                    <textarea name="descrip-producto" rows="2" cols="15" required></textarea>
                     <br><br>
                     <button class="boton-registrar" type="submit"> Eliminar</button>
                     <button class="boton-cancelar" type="reset"> Cancelar </button>
@@ -109,16 +139,22 @@
         </div>
     </div>
 
-    <br></br>
+    <br><br>
 
-    <table id="productos" border=1>
-        <tr>
-            <th>DESCRIPCION</th>
-            <th>PRECIO</th>
-            <th>CANTIDAD DISPONIBLE</th>
-            <th>CATEGORIA</th>
-        </tr>
-    </table>
+    <div class="tabla">
+        <table id="productos">
+            <thead>
+                <tr>
+                    <th>DESCRIPCION</th>
+                    <th>UNIDAD/MEDIDA</th>
+                    <th>PRECIO</th>
+                    <th>CANTIDAD DISPONIBLE</th>
+                    <th>CATEGORIA</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
     <footer>
         <p>&copy; 2024 Panadería El Maná. Todos los derechos reservados de autor.</p>
