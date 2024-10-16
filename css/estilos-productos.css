@@ -1,60 +1,96 @@
 body{
     font-family: sans-serif;
     margin: 0;
-    padding: 0;
-    background-image: url("../img/fondo4.jpg");
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /*background-image: url("../img/fondo4.jpg");*/
+    background-color: #3f1c13;
     background-size: cover;
     background-attachment: fixed;
 }
 
-.imagen-menu{
-    width: 100%;
-    display:block;
-}
-
-.titulo{
-    text-decoration: underline;
-    text-align: center;
-    color: white;
-    font-size: 3rem;
-    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
-    margin-top: 20px;
-}
-
-/* Estilos para la barra de navegación */
-.navbar {
-    background-color: #421c12; /* Fondo oscuro */
-    display: flex; /* Alinea los elementos en una barra horizontal */
-    justify-content: center; /* Centra los elementos de la barra */
-    padding: 15px 0; /*Ajusta el padding para darle más espacio vertical */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para mayor profundidad */
-}
-
-.navbar-nav {
-    display: flex; /* Hace que los items de la barra se distribuyan horizontalmente */
-    list-style: none; /* Elimina los puntos de la lista */
-    margin: 0;
+ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
     padding: 0;
+    margin: 0;
+    background-color: #a75a26;
+    height: 60px;
 }
 
-.nav-item {
-    margin: 0 15px; /* Espacio entre cada item del menú */
+ul li.menu-title {
+    font-size: 30px;
+    color: #ffffff;
+    margin-left: 50px;
 }
 
-.navbar-nav .nav-item .nav-link {
-    color: #fff;
-    padding: 10px 15px;
-    text-decoration: none; /* Elimina el subrayado de los enlaces */
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+li.logo_menu img {
+    width: 45px;
 }
 
-.navbar-nav .nav-item .nav-link:hover {
-    background-color: #421c12; /* Color de fondo al pasar el mouse */
-    border-radius: 5px; /* Borde redondeado para un efecto más suave */
-    transform: scale(1.05); /* Efecto de agrandamiento al pasar el mouse */
-    color: #f2a900; /* Cambia el color del texto al pasar el mouse */
+li.dropdown {
+    display: inline-block;
+    align-items: center;
 }
+
+li.dropdown img {
+    margin-left: 20px;
+    padding: 0;
+    width: 45px;
+}
+
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: max-height 0.3s ease-out;
+}
+
+.dropdown-content a {
+    color: black;
+    font-family: sans-serif;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    max-height: 300px;
+}
+
+ul li {
+    display: flex;
+    align-items: center;
+}
+
+li.logo_menu {
+    margin-right: 50px;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: auto auto ;
+    gap: 30px;
+    background-color: #e1dbdb;
+    padding:20px;
+    margin:30px;
+    border-radius:30px;
+}
+
+
+
+/*
 
 .formularios{
     display: flex;
@@ -63,6 +99,8 @@ body{
     justify-content: center;
 }
 
+*/
+
 fieldset {
     padding: 20px;
     border: none;
@@ -70,12 +108,27 @@ fieldset {
 
 legend {
     font-size: 20px;
-    font-weight: bold;
     text-align: center;
     text-decoration: underline;
-    color: #ffffff;
+    color: black;
 }
 
+.form-registro{
+    background-color: white;
+    padding: 20px;
+    border-radius:30px;
+}
+
+.tabla-productos{
+    background-color: white;
+    padding: 20px;
+    border-radius:30px;
+
+}
+
+
+
+/*
 label{
     font-family: sans-serif;
     margin: 5px;
@@ -142,7 +195,9 @@ button {
 }
 
 button:hover {
-    transform: scale(1.05); /* Efecto de agrandamiento al pasar el mouse */
+    transform: scale(1.05); */
+/* Efecto de agrandamiento al pasar el mouse *//*
+
 }
 
 .boton-registrar{
@@ -166,14 +221,18 @@ button:hover {
     justify-content: center;
 }
 
-/* Estilos generales para la tabla */
+*/
+/* Estilos generales para la tabla *//*
+
 #productos {
 
     margin: 20px 0;
     font-family: Sans-serif;
 }
 
-/* Estilos para el encabezado */
+*/
+/* Estilos para el encabezado *//*
+
 #productos thead {
     background-color:#855940;
     color: white;
@@ -186,25 +245,27 @@ button:hover {
     border: 2px solid #ddd;
 }
 
-/* Estilos para el cuerpo de la tabla */
+*/
+/* Estilos para el cuerpo de la tabla *//*
+
 #productos td {
     background-color:#c0a392;
     padding: 10px;
     border: 1px solid black;
 }
 
-
+*/
 footer{
-    display: flex;
-    background-color: #3E1C13;
+    display: block;
+    background-color: #a75a26;
     color: white;
-    margin-top: 50px;
-    padding-top: 10px;
     border-radius: 20px;
-    justify-content: center;
-    align-items: center;
+    text-align:center;
+    padding: 1px;
+    margin-top: auto;
 }
 
+/*
 @media (max-width: 768px) {
     .navbar-nav {
       flex-direction: column;
@@ -250,43 +311,72 @@ footer{
   }
 
 
-/* Pantallas pequeñas (móviles) */
+*/
+/* Pantallas pequeñas (móviles) *//*
+
 @media (max-width: 480px) {
     .barra-nav {
-        padding-bottom: 120px; /* Ajuste el padding para dispositivos móviles */
-        background-size: contain; /* Ajusta el fondo para pantallas pequeñas */
+        padding-bottom: 120px; */
+/* Ajuste el padding para dispositivos móviles *//*
+
+        background-size: contain; */
+/* Ajusta el fondo para pantallas pequeñas *//*
+
         border-width: 2px;
     }
 
     .nav-items {
-        flex-direction: column; /* Apila los elementos verticalmente */
-        align-items: center; /* Centra los elementos cuando se apilan */
+        flex-direction: column; */
+/* Apila los elementos verticalmente *//*
+
+        align-items: center; */
+/* Centra los elementos cuando se apilan *//*
+
         margin-bottom: 20px;
     }
 
     ul {
         flex-direction: column;
-        gap: 10px; /* Agrega espacio entre los elementos */
+        gap: 10px; */
+/* Agrega espacio entre los elementos *//*
+
     }
 
     li > a {
-        font-size: 16px; /* Tamaño de fuente más pequeño para móviles */
+        font-size: 16px; */
+/* Tamaño de fuente más pequeño para móviles *//*
+
     }
 }
 
-/* Media query para pantallas medianas */
+*/
+/* Media query para pantallas medianas *//*
+
 @media (max-width: 768px) {
     .barra-nav {
-        background-size: cover; /* Sigue cubriendo el área disponible */
-        padding-bottom: 180px; /* Ajusta el padding para pantallas medianas */
+        background-size: cover; */
+/* Sigue cubriendo el área disponible *//*
+
+        padding-bottom: 180px; */
+/* Ajusta el padding para pantallas medianas *//*
+
     }
 }
 
-/* Media query para pantallas pequeñas */
+*/
+/* Media query para pantallas pequeñas *//*
+
 @media (max-width: 480px) {
     .barra-nav {
-        background-size: contain; /* La imagen se ajusta sin recortarse */
-        background-position: center; /* Asegura que la imagen esté centrada */
-        padding-bottom: 120px; /* Ajusta el padding para pantallas más pequeñas */
+        background-size: contain; */
+/* La imagen se ajusta sin recortarse *//*
+
+        background-position: center; */
+/* Asegura que la imagen esté centrada *//*
+
+        padding-bottom: 120px; */
+/* Ajusta el padding para pantallas más pequeñas *//*
+
     }
+*/
 }
