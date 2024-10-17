@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def pedir_insumos(request):
+    return render(request, 'gestion_insumos/pedidos_proveedores.html')
