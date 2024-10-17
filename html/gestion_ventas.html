@@ -1,113 +1,149 @@
 <!DOCTYPE html>
-<html lang="es-AR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gestión de Ventas - Panadería El Maná</title>
-        <link rel="stylesheet" href="../css/estilos-venta.css">
-        <link rel="icon" type="image/png" href="../img/logo.png">
-    </head>
-    <body>
-        <header>
-            <img src="../img/panaderia-el-mana3.jpg" alt="Logo de Panadería El Maná">
-        </header>
-        <nav class="barra-nav navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="PaginaPortada.html">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="registro_productos.html">Gestión de Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pedidos_proveedores.html">Pedidos a Proveedores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="gestion_ventas.html">Gestión de Ventas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="clientes_mayoristas.html">Clientes Mayoristas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="reportes.html">Reportes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contacto.html">Contactos</a>
-                        </li>
-                    </ul>
-                </div>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Ventas</title>
+    <link rel="stylesheet" href="../css/estilos-venta.css">
+    
+    
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <ul>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">
+                <img src="../img/barra_menu.png">
+            </a>
+            <div class="dropdown-content">
+                <a href="registro_productos.html">Gestión de Productos</a>
+                <a href="pedidos_proveedores.html">Pedidos a Proveedores</a>
+                <a href="gestion_ventas.html">Gestión de Ventas</a>
+                <a href="clientes_mayoristas.html">Clientes Mayoristas</a>
+                <a href="reportes.html">Reportes</a>
+                <a href="contacto.html">Contactos</a>
             </div>
-        </nav>
-        <main>
-            <hr>
-            <h1>Registro de Ventas</h1>
-            <hr>
-            <section class="formulario">
-                <form action="" method="get">
-                    <fieldset>
-                        <legend>Formulario de Venta</legend>
+        </li>
 
-                        <label for="producto">Producto</label>
-                        <select id="producto" name="producto_id" required>
-                            <option value="" disabled selected>Seleccione un producto:</option>
-                            <option value="1">Pan</option>
-                            <option value="2">Galletas</option>
-                            <option value="3">Torta</option>
-                        </select>
+        <li class="menu-title">Gestión de Ventas</li>
 
-                        <label for="cantidad">Cantidad</label>
-                        <input type="number" id="cantidad" name="cantidad" step="1" min="1" required>
+        <li class="logo_menu">
+            <a href="PaginaPortada.html">
+                <img src="../img/logo.png">
+            </a>
+        </li>
+    </ul>
 
-                        <label for="cliente">Cliente</label>
-                        <select id="cliente" name="cliente" required>
-                            <option value="" disabled selected> Seleccione el tipo de cliente </option>
-                            <option value="1">Mayorista </option>
-                            <option value="2">Minorista</option>
+    <main>
+        <h2>Registro de Venta</h2>
+        <div class="contenedor-principal">
+            <div class="main-content">
+                <!-- Columna izquierda: Datos predefinidos y datos del producto -->
+                <section class="formulario">
+                    <div class="cuadro-datos datos-predefinidos">
+                        <h3>Datos Predefinidos</h3>
+                        <form>
+                            <div class="fila">
+                                <div class="campo">
+                                    <label for="venta-num">Venta N°</label>
+                                    <input type="text" id="venta-num" disabled>
+                                </div>
+                                <div class="campo">
+                                    <label for="fecha">Fecha</label>
+                                    <input type="text" id="fecha" placeholder="dd/mm/aaaa" disabled>
+                                </div>
+                                <div class="campo">
+                                    <label for="vendedor">ID Vendedor</label>
+                                    <input type="text" id="vendedor" disabled>
+                                </div>
+                            </div>
+                            <div class="fila">
+                                <div class="campo">
+                                    <label for="comprobante">N° Comprobante</label>
+                                    <input type="text" id="comprobante" disabled>
+                                </div>
+                                <div class="campo">
+                                    <label for="cliente">Tipo de cliente</label>
+                                    <select id="cliente">
+                                        <option>Seleccionar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="fila">
+                                <div class="campo">
+                                    <label for="pago">Forma de pago</label>
+                                    <select id="pago">
+                                        <option>Seleccionar</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
-                        </select>
+                    <div class="cuadro-datos">
+                        <h3>Datos del Producto</h3>
+                        <form>
+                            <div class="fila">
+                                <div class="campo">
+                                    <label for="producto">Producto</label>
+                                    <input type="text" id="producto">
+                                </div>
+                                <div class="campo">
+                                    <label for="precio">Precio / unidad</label>
+                                    <input type="number" id="precio" min="0.01" step="0.01" required>
+                                </div>
+                                <div class="campo">
+                                    <label for="cantidad">Cantidad</label>
+                                    <input type="number" id="cantidad" min="1" required>
+                                </div>
+                            </div>
+                            <button type="button" id="agregar-btn">Agregar</button>
+                        </form>
+                    </div>
+                    
+                </section>
 
-                        <label for="vendedor">Vendedor</label>
-                        <select id="vendedor" name="vendedor" required>
-                            <option value="" disabled selected>Seleccione un vendedor</option>
-                            <option value="1">Sheila</option>
-                            <option value="2">Lautaro</option>
-                            <option value="3">Guillermo</option>
-                        </select>
+                <!-- Columna derecha: Tabla de productos y botones -->
+                <section class="tabla-productos">
+                    <div class="cuadro-tabla">
+                        <h3>Detalles</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Producto</th>
+                                    <th>Categoría</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio / unidad</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Filas generadas dinámicamente -->
+                            </tbody>
+                        </table>
 
-                        <label for="fecha_hora">Fecha y hora de venta</label>
-                        <input type="datetime-local" id="fecha_hora" name="fecha_hora" required>
+                        <div class="total-pagar">
+                            <span>TOTAL A PAGAR</span>
+                            <input type="text" disabled>
+                        </div>
 
-                        <label for="forma_de_pago">Forma de pago</label>
-                        <select id="forma_de_pago" name="forma_de_pago" required>
-                            <option value=""disabled selected>Seleccione una forma de pago </option>
-                            <option value="1">Efectivo</option>
-                            <option value="2">Tarjeta de crédito</option>
-                            <option value="3">Tarjeta de débito </option>
-                            <option value="4">Transferencia</option>
-                        </select>
+                        <div class="acciones-tabla">
+                            <button type="button">Cancelar</button>
+                            <button type="submit">Registrar</button>
+                        </div>
+                    </div>
+                </section>
 
-                        <label for="observaciones">Observaciones</label>
-                        <textarea id="observaciones" name="observaciones"></textarea>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Panadería El Maná. Todos los derechos reservados de autor.</p>
+    </footer>
+    <script src="../js/validaciones-ventas.js"></script>
 
-                        <button class="boton-registrar" type="submit" aria-label="Registrar la venta">Registrar venta</button>
-                        <button class="boton-cancelar" type="reset" aria-label="Cancelar la venta">Cancelar Venta</button>
-                    </fieldset>
-                </form>
-            </section>
-        </main>
-        <footer>
-            <p>&copy; 2024 Panadería El Maná. Todos los derechos reservados de autor.</p>
-        </footer>
-        <script>
-            const botonCancelar = document.querySelector('.boton-cancelar');
-            botonCancelar.addEventListener('click', function(event) {
-            if (!confirm('¿Estás seguro de que quieres cancelar esta venta?')) {
-                event.preventDefault();
-                }
-            });
-        </script>
-        
-    </body>
+
+</body>
 </html>
