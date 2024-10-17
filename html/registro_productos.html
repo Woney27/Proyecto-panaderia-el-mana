@@ -35,47 +35,52 @@
       </li>
     </ul>
 
-    <br>
-
     <div class="grid-container">
-            <div class="form-registro">
-                <form id="form-producto" class="form-agregar-producto" action="#">
-                    <fieldset>
-                        <legend>Registrar producto</legend>
+            <form id="form-producto" class="form-agregar-producto" action="#">
+                <fieldset>
+                    <legend>Registrar producto</legend>
+
+                    <div>
                         <label for="descrip-producto">Descrición del Producto</label><br>
                         <textarea id="descrip-producto"  rows="1" cols="20" required></textarea>
-                        <br><br>
-                        <label for="unidad-medida">Unidad / medida</label><br>
+                    </div>
+
+                    <div class="campos1">
+                        <label for="unidad-medida">Unidad / medida</label>
+
                         <select id="unidad-medida" >
                             <option value="Kilogramos">Kilogramos</option>
                             <option value="Gramos">Gramos</option>
                             <option value="Unidad">Unidad</option>
                         </select>
 
-                        <label class="cantidad" for="cantidad">Cantidad disponible</label> <br>
+                        <label class="cantidad" for="cantidad">Cantidad disponible</label>
                         <input type="number" id="cantidad" min="0" required>
-                        <br><br>
+                    </div>
 
-                        <label for="precio">Precio</label><br>
+                    <div class="campos2">
+                        <label for="precio">Precio / unidad</label><br>
                         <input type="number" id="precio" min="0" step="0.01" required>
 
                         <label for="punto-reposicion">Punto de reposición</label> <br>
                         <input type="number" id="punto-reposicion" min="0" required>
-                        <br><br>
+                    </div>
 
+                    <div>
                         <label for="categoriaProduc">Categoría de producto</label><br>
-                        <select id="categoriaProduc" >
+                        <select id="categoriaProduc">
                             <option value="Panificacion">Panificación</option>
-                            <option value="Gramos">Pastelería</option>
-                            <option value="Unidad">Unidad</option>
+                            <option value="Pasteleria">Pastelería</option>
                         </select>
-                        <br><br>
+                    </div>
 
-                        <button class="boton-registrar" type="submit"> Guardar</button>
-                        <button class="boton-cancelar" type="reset"> Cancelar </button>
-                    </fieldset>
-                </form>
-            </div>
+                    <button class="boton-registrar" type="submit"> Guardar</button>
+                    <button class="boton-cancelar" type="reset"> Cancelar </button>
+                </fieldset>
+            </form>
+
+
+
 
             <!--<div>
                 <form class="form-modif-producto" action="#">
@@ -137,18 +142,19 @@
                 <table id="productos">
                     <thead>
                         <tr>
-                            <th>DESCRIPCION</th>
-                            <th>UNIDAD/MEDIDA</th>
-                            <th>PRECIO</th>
-                            <th>CANTIDAD DISPONIBLE</th>
-                            <th>CATEGORIA</th>
+                            <th>ID</th>
+                            <th>Descripción</th>
+                            <th>Categoría</th>
+                            <th>Cantidad disponible</th>
+                            <th>Unidad</th>
+                            <th>Precio/unidad</th>
+                            <th>Editar/Eliminar</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
             </fieldset>
         </div>
-
     </div>
 
     <footer>
