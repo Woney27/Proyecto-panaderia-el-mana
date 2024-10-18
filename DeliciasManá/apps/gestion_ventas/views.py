@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def registrar_ventas(request):
+    return render(request, 'gestion_ventas/gestion_ventas.html')
