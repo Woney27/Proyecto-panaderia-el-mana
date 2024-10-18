@@ -105,8 +105,8 @@ legend {
 .form-agregar-producto {
     width:40%;
     margin-right:30px;
-    background-color: white;
-    padding: 20px;
+    background-color: black;
+    padding: 50px;
     border-radius: 30px;
 }
 
@@ -114,22 +114,23 @@ legend {
     display: flex;
     flex-direction:column;
     align-items: flex-start;
-
 }
+
 .campos1 label{
     margin-bottom: 5px;
 }
 
 .campos1 select,
 .campos1 input {
-    margin-bottom: 10px; /* Add space below select and input elements */
+    margin-bottom: 10px;
 }
 
 .campos2{
     display: flex;
+    flex-direction:column;
+    align-items: flex-start;
 }
 
-/* Estilo para cada campo del formulario */
 .form-agregar-producto div{
     margin-top:15px;
 }
@@ -169,7 +170,6 @@ button:hover {
     transform: scale(1.05); */
 }
 
-/* Estilo para la tabla de productos */
 .tabla-productos {
     width:60%;
     flex: 1;
@@ -223,33 +223,33 @@ footer{
     h1 {
       font-size: 2em;
     }
-  
+
     .formularios {
       grid-template-columns: 1fr;
     }
-  
+
     form {
       padding: 15px;
     }
   }
-  
+
   @media (max-width: 480px) {
     h1 {
       font-size: 1.5em;
     }
-  
+
     .navbar {
       flex-direction: column;
     }
-  
+
     .nav-item a {
       font-size: 1em;
     }
-  
+
     form {
       padding: 10px;
     }
-  
+
     .boton-registrar, .boton-cancelar {
     font-size: 0.9em;
     padding: 8px 15px;

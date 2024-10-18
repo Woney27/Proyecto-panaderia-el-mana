@@ -1,13 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panaderia El Maná</title>
-    <link rel="stylesheet" href="../css/estilos-productos.css">
-    <link rel="icon" type="image/png" href="../img/medialuna-removebg-preview.png">
-    <script src="../js/validaciones-productos.js"></script>
-    <link rel="icon" type="image/png" href="../img/logo.png">
+    <link rel="stylesheet" href="{% static 'css/estilos-productos.css' %}">
+    <script src="{% static 'js/validaciones-productos.js' %}"></script>
+    <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -15,7 +15,7 @@
 
     <ul>
       <li class="dropdown">
-        <a href="javascript:void(0)" class="dropbtn"> <img src="../img/barra_menu.png"> </a>
+        <a href="javascript:void(0)" class="dropbtn"> <img src="{% static 'img/barra_menu.png' %}"> </a>
         <div class="dropdown-content">
             <a href="registro_productos.html">Gestión de Productos</a>
             <a href="pedidos_proveedores.html">Pedidos a Proveedores</a>
@@ -30,7 +30,7 @@
 
       <li class="logo_menu">
           <a href="PaginaPortada.html">
-              <img src="../img/logo.png">
+              <img src="{% static 'img/logo.png' %}">
           </a>
       </li>
     </ul>
