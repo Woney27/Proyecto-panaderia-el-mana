@@ -8,5 +8,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('gestion_productos/', include('apps.gestion_productos.urls')),
     path('gestion_insumos', include('apps.gestion_insumos.urls')),
+    path('gestion_ventas', include('apps.gestion_ventas.urls')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
