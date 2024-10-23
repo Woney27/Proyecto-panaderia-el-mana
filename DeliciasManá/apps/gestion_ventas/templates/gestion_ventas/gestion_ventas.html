@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Ventas</title>
+    <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'css/estilos-venta.css' %}">
     
     
@@ -67,7 +68,8 @@
                                 <div class="campo">
                                     <label for="cliente">Tipo de cliente</label>
                                     <select id="cliente">
-                                        <option>Seleccionar</option>
+                                        <option value="Minorista">Minorista</option>
+                                        <option value="Mayorista">Mayoristas</option>
                                     </select>
                                 </div>
                             </div>
@@ -75,7 +77,9 @@
                                 <div class="campo">
                                     <label for="pago">Forma de pago</label>
                                     <select id="pago">
-                                        <option>Seleccionar</option>
+                                        <option value="Efectivo">Efectivo</option>
+                                        <option value="Tarjeta">Tarjeta</option>
+                                        <option value="Transferencia">Transferencia</option>
                                     </select>
                                 </div>
                             </div>
@@ -84,7 +88,7 @@
 
                     <div class="cuadro-datos">
                         <h3>Datos del Producto</h3>
-                        <form>
+                        <form >
                             <div class="fila">
                                 <div class="campo">
                                     <label for="producto">Producto</label>

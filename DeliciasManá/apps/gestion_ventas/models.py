@@ -27,9 +27,9 @@ class Item(models.Model):
     cantidadProducto = models.PositiveIntegerField()
     precioItem = models.DecimalField
 
-    def save(self, *args, **kwargs):
-       self.precioItem = self.cantidadProducto * self.producto ## VERIFICAR
-        #super(Item, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #    self.precioItem = self.cantidadProducto * self.producto
+    #     super(Item, self).save(*args, **kwargs)
 
 
 class ClienteMayorista (models.Model):
