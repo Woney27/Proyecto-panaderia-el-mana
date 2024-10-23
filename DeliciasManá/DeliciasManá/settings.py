@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'apps.gestion_insumos',
     'apps.gestion_usuario',
     'apps.gestion_ventas',
-    'apps.gestion_productos'
+    'apps.gestion_productos',
+    'apps.gestion_empleados'
 ]
 
 MIDDLEWARE = [
