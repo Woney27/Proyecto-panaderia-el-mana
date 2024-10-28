@@ -1,5 +1,6 @@
 class Producto {
-    constructor(descripcion, unidadMedida, precio, cantDispo, categoria) {
+    constructor(id, descripcion, unidadMedida, precio, cantDispo, categoria) {
+        this.id = id;
         this.descripcion = descripcion;
         this.unidadMedida = unidadMedida;
         this.precio = parseFloat(precio);
@@ -16,19 +17,18 @@ class Producto {
 }
 
 let productos = [];
-
+let id = 1;
 document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('form-producto').addEventListener('submit', function(event) {
         event.preventDefault();
-
+        let id = document.getElementById("id").value + 1;
         let descripcion = document.getElementById("descrip-producto").value;
         let unidadMedida = document.getElementById("unidad-medida").value;
         let precio = document.getElementById("precio").value;
         let cantDispo = document.getElementById("cantidad").value;
         let categoria = document.getElementById("categoriaProduc").value;
-
-        let producto = new Producto(descripcion, unidadMedida, precio, cantDispo, categoria);
+        let producto = new Producto(id++, descripcion, unidadMedida, precio, cantDispo, categoria);
         productos.push(producto);
 
         mostrarProductos();
@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         productos.forEach((producto, index) => {
             let fila = tablaProductos.insertRow();
             fila.innerHTML = `
+                <td>${producto.id}</td>
                 <td>${producto.descripcion}</td>
                 <td>${producto.unidadMedida}</td>
                 <td>${producto.precio.toFixed(2)}</td>

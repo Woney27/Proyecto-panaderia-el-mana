@@ -45,11 +45,11 @@
                 <section class="formulario">
                     <div class="cuadro-datos datos-predefinidos">
                         <h3>Datos Predefinidos</h3>
-                        <form>
+                        <form method="POST">
                             <div class="fila">
                                 <div class="campo">
                                     <label for="venta-num">Venta N°</label>
-                                    <input type="text" id="venta-num" disabled>
+                                    <input type="text" id="venta-num" value="1" disabled>
                                 </div>
                                 <div class="campo">
                                     <label for="fecha">Fecha</label>
@@ -88,7 +88,7 @@
 
                     <div class="cuadro-datos">
                         <h3>Datos del Producto</h3>
-                        <form >
+                        <form method="POST">
                             <div class="fila">
                                 <div class="campo">
                                     <label for="producto">Producto</label>
@@ -104,9 +104,15 @@
                                 </div>
                             </div>
                             <button type="button" id="agregar-btn">Agregar</button>
+
                         </form>
                     </div>
-                    
+                    {% block content %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    </form>
+                    {% endblock %}
                 </section>
 
                 <!-- Columna derecha: Tabla de productos y botones -->

@@ -151,7 +151,23 @@
                             <th>Editar/Eliminar</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        {% for productos in productos %}
+                        <tr>
+                            <td>{{ productos.id }}</td>
+                            <td>{{ productos.descripcion }}</td>
+                            <td>{{ productos.unidad_medida }}</td>
+                            <td>{{ productos.cantidad_disponible }}</td>
+                            <td>{{ productos.precio_unidad }}</td>
+                            <td>{{ productos.punto_reposicion }}</td>
+                            <td>{{ productos.categoria }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td>No hay productos registrados</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </fieldset>
         </div>
