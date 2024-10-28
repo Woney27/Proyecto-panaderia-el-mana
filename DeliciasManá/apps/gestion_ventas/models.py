@@ -1,5 +1,5 @@
 from django.db import models
-
+from apps.gestion_productos.models import Producto
 
 class Venta(models.Model):
     fechaVenta = models.DateField(auto_now_add=True)
@@ -13,7 +13,7 @@ class Venta(models.Model):
         ('efectivo', 'Efectivo'),
         ('tarjeta', 'Tarjeta'),
         ('transferencia', 'Transferencia')],
-         default='Efectivo')
+        default='Efectivo')
     montoTotal = models.DecimalField(max_digits=10,decimal_places=2, blank=True, default=0.00)
 
 
@@ -23,18 +23,23 @@ class Venta(models.Model):
 
 class Item(models.Model):
     venta = models.ForeignKey(Venta, on_delete=models.CASCADE, related_name='items')
-    #producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidadProducto = models.PositiveIntegerField()
-    precioItem = models.DecimalField
+    precioItem = models.DecimalField(max_digits=10, decimal_places=2, default= 0.00)
 
     # def save(self, *args, **kwargs):
-    #    self.precioItem = self.cantidadProducto * self.producto
+    #     self.precioItem = float(self.cantidadProducto) * float(self.producto.precio_unidad)
     #     super(Item, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return f'Item {self.id} - Cantidad: {self.cantidadProducto} - Precio Unitario: {self.precioItem}'
 
 
 class ClienteMayorista (models.Model):
     razonSocial = models.CharField(max_length=50)
-    cuit = models.PositiveIntegerField()
+    cuit = models.CharField(max_length=11, unique=True)
     telefono = models.PositiveIntegerField()
     domicilio = models.CharField(max_length=150)
 
+    def __str__(self):
+        return f'Cliente: {self.razonSocial} - CUIT: {self.cuit}'
