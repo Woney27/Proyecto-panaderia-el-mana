@@ -1,69 +1,324 @@
+{% extends "base/base.html" %}
+{% block title %}Registro De Empleados - Panadería El Maná{% endblock %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Empleados</title>
-    <link rel="stylesheet" href="{% static 'css/estilos-empleados.css' %}">
-</head>
-<body>
+{% block head %}
+    <style>
+        /* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <!-- Barra de navegación -->
-    <ul>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">
-                <img src="{% static 'img/barra_menu.png' %}" alt="Menu">
-            </a>
-            <div class="dropdown-content">
-                <a href="registro_productos.html">Gestión de Productos</a>
-                <a href="pedidos_proveedores.html">Pedidos a Proveedores</a>
-                <a href="gestion_ventas.html">Gestión de Ventas</a>
-                <a href="clientes_mayoristas.html">Clientes Mayoristas</a>
-                <a href="reportes.html">Reportes</a>
-                <a href="contacto.html">Contactos</a>
-            </div>
-        </li>
+/* Estilo general */
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Permite que el footer esté al final */
+    background-color: #3f1c13;
+    background-size: cover;
+    background-attachment: fixed;
+}
 
-        <li class="menu-title">Gestión de Empleados</li>
+/* Estilo de la lista de navegación */
+ul {
+    display: flex;
+    justify-content: space-between;
+    align-items:center ;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #a75a26;
+    height: 60px;
+}
 
-        <li class="logo_menu">
-            <a href="PaginaPortada.html">
-                <img src="{% static 'img/logo.png' %}" alt="Logo">
-            </a>
-        </li>
-    </ul>
+ul li {
+    display: flex;
+    align-items: center;
+}
+
+li.menu-title {
+    font-size: 30px;
+    color: #ffffff;
+    margin-left: 50px;
+}
+
+li.logo_menu {
+    margin-right: 50px;
+}
+
+li.logo_menu img,
+li.dropdown img {
+    width: 45px;
+    margin-left: 20px;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: max-height 0.3s ease-out;
+}
+
+.dropdown-content a {
+    color: black;
+    font-family: sans-serif;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    max-height: 300px;
+}
+
+/* Estilos específicos para la página de ventas */
+h2 {
+    color: #ffffff;
+    background-color: #4f2e1f;
+    text-align: center;
+    padding: 8px 0;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+/* Diseño del contenido principal */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.formulario,
+.tabla-empleados {
+    flex-grow: 1;
+}
+
+.datos-predefinidos,
+.cuadro-tabla {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #b6b6b6;
+    margin-bottom: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    background-color: #e1dbdb;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.grid-container .campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+/* Estilo de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+table th,
+table td {
+    border: 1px solid #ffffff;
+    padding: 8px;
+    text-align: center;
+    background-color: #b9b7b5;
+}
+
+table th {
+    background-color: #c68b53;
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+table tr:hover {
+    background-color: #d1c7a3; /* Color de fondo al pasar el mouse */
+}
+
+/* Estilos de acciones y botones */
+.acciones-tabla {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #ffcc00;
+    border: none;
+    padding: 12px 25px; /* Ajusta el tamaño */
+    border-radius: 25px; /* Esquinas más redondeadas */
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Efecto de transición */
+}
+
+button:hover {
+    background-color: #ffaa00;
+}
+
+/* Estilos de campos de formulario */
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Filas de producto, precio y cantidad */
+.fila {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 20px; /* Espacio entre los campos */
+}
+
+.campo {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.campo:last-child {
+    margin-right: 0;
+}
+
+/* Estilo para datos predefinidos */
+.datos-predefinidos {
+    padding: 10px;
+    border: 1px solid #d9a97e;
+    border-radius: 10px;
+    background-color: #f9f3e4;
+    margin-bottom: 20px; /* Agrega este margen */
+}
+
+/* Mejoras en el diseño del contenedor principal */
+.contenedor-principal {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo del footer */
+footer {
+    display: flex;
+    background-color: #8b4513;
+    color: white;
+    padding: 20px; /* Aumenta el padding */
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto; /* Empuja el footer hacia el fondo */
+}
+
+.cuadro-datos {
+    border: 1px solid #ccc; /* Borde del cuadro */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espacio entre cuadros */
+    background-color: #f9f9f9; /* Color de fondo */
+}
+
+.cuadro-datos h3 {
+    margin: 0 0 10px; /* Espacio inferior del encabezado */
+}
+
+    </style>
+{% endblock %}
+{% block content %}
+
+    <div class="barra_navegacion">
+        <ul>
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn"> <img src="{% static 'img/barra_menu.png' %}"> </a>
+              <div class="dropdown-content">
+                  <a href="registro_productos.html">Gestión de Productos</a>
+                  <a href="pedidos_proveedores.html">Pedidos a Proveedores</a>
+                  <a href="gestion_ventas.html">Gestión de Ventas</a>
+                  <a href="clientes_mayoristas.html">Clientes Mayoristas</a>
+                  <a href="reportes.html">Reportes</a>
+                  <a href="contacto.html">Contactos</a>
+              </div>
+            </li>
+
+            <li class="menu-title">Registro de Empleados</li>
+
+
+            <li class="logo_menu">
+                <a href="PaginaPortada.html">
+                    <img src="{% static 'img/logo.png' %}">
+                </a>
+            </li>
+          </ul>
+    </div>
+
+<br><br>
+
 
     <main>
-        <h2>Registro de Empleados</h2>
         <div class="contenedor-principal">
             <div class="main-content">
                 <section class="formulario">
                     <div class="cuadro-datos datos-personales">
                         <h3>Datos Personales</h3>
-                        <form id="formulario-empleado">
+                        <form id="formulario-empleado" method="POST">
+                            {% csrf_token %}
                             <div class="fila">
                                 <div class="campo">
                                     <label for="nombre">Nombre Completo</label>
-                                    <input type="text" id="nombre" required>
+                                    <input type="text" name="nombre" id="nombre" required>
                                 </div>
                                 <div class="campo">
                                     <label for="cuit">Cuit</label>
-                                    <input type="text" id="cuit" pattern="\d{11}" title="El CUIT debe tener exactamente 11 dígitos" required>
+                                    <input type="text" name="cuit" id="cuit" pattern="\d{11}" title="El CUIT debe tener exactamente 11 dígitos" required>
                                 </div>
                                 <div class="campo">
                                     <label for="domicilio">Domicilio</label>
-                                    <input type="text" id="domicilio" required>
+                                    <input type="text" name="domicilio" id="domicilio" required>
                                 </div>
                             </div>
                             <div class="fila">
                                 <div class="campo">
                                     <label for="telefono">Teléfono</label>
-                                    <input type="tel" id="telefono" pattern="\d{10}" title="Debe ser un número de 10 dígitos" required>
+                                    <input type="tel" name="telefono" id="telefono" pattern="\d{10}" title="Debe ser un número de 10 dígitos" required>
                                 </div>
                                 <div class="campo">
                                     <label for="fecha-nac">Fecha de nacimiento</label>
-                                    <input type="date" id="fecha-nac" required>
+                                    <input type="date" name="fechaNacimiento" id="fecha-nac" required>
                                 </div>
                             </div>
                             <div class="cuadro-datos datos-cargo">
@@ -71,15 +326,22 @@
                                 <div class="fila">
                                     <div class="campo">
                                         <label for="cargo">Cargo</label>
-                                        <input type="text" id="cargo" required>
+                                        <select name="cargo" id="cargo">
+                                            <option>Seleccionar el cargo</option>
+                                            <option value="vendedor">Vendedor</option>
+                                            <option value="administrador">Administrador</option>
+                                            <option value="gerente">Gerente</option>
+                                            <option value="recepcionista">Recepcionista</option>
+                                            <option value="reponedor">Reponedor</option>
+                                        </select>
                                     </div>
                                     <div class="campo">
                                         <label for="fecha-ingreso">Fecha de Ingreso</label>
-                                        <input type="date" id="fecha-ingreso" required>
+                                        <input type="date" name="fechaIngreso" id="fecha-ingreso" required>
                                     </div>
                                     <div class="campo">
                                         <label for="estado">Estado</label>
-                                        <select id="estado" required>
+                                        <select id="estado" name="estadoLaboral" required>
                                             <option value="activo" selected>Activo</option>
                                             <option value="inactivo">Inactivo</option>
                                         </select>
@@ -96,7 +358,7 @@
                 <section class="tabla-empleados">
                     <div class="cuadro-tabla">
                         <h3>Tabla de Empleados</h3>
-                        <table>
+                        <table border="1">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -119,17 +381,11 @@
                             <button id="btn-buscar">Buscar</button>
                         </div>
                         <div id="mensaje-busqueda"></div>
-                        
+
                     </div>
                 </section>
             </div>
         </div>
     </main>
+{% endblock %}
 
-    <footer>
-        <p>&copy; 2024 Panadería El Maná. Todos los derechos reservados.</p>
-    </footer>
-
-    <script src="{% static 'js/validaciones-empleados.js' %}"></script>
-</body>
-</html>
