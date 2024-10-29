@@ -6,6 +6,7 @@ from django.views.generic.edit import FormView
 from django.forms import formset_factory
 from django.forms import modelformset_factory
 
+
 def registrar_ventas(request):
     if request.method == 'POST':
         form = VentaForm(request.POST)  
@@ -13,6 +14,6 @@ def registrar_ventas(request):
             form.save()
             messages.success(request, 'Venta registrada exitosamente.')
             return redirect('gestion_ventas: ventas')
-        else:
-            form = VentaForm()
+    else:
+        form = VentaForm()
     return render(request, 'gestion_ventas/gestion_ventas.html', {'form': form})
