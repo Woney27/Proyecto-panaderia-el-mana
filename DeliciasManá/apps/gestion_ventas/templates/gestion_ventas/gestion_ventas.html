@@ -1,50 +1,21 @@
+{% extends 'base/base.html'%}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Ventas</title>
+{% block head %}
     <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'css/estilos-venta.css' %}">
-    
-    
-</head>
-<body>
+{% endblock %}
 
-    <!-- Barra de navegación -->
-    <ul>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">
-                <img src="{% static 'img/barra_menu.png' %}">
-            </a>
-            <div class="dropdown-content">
-                <a href="registro_productos.html">Gestión de Productos</a>
-                <a href="pedidos_proveedores.html">Pedidos a Proveedores</a>
-                <a href="gestion_ventas.html">Gestión de Ventas</a>
-                <a href="clientes_mayoristas.html">Clientes Mayoristas</a>
-                <a href="reportes.html">Reportes</a>
-                <a href="contacto.html">Contactos</a>
-            </div>
-        </li>
 
-        <li class="menu-title">Gestión de Ventas</li>
+{% block title %}<b><u>Registrar Venta</u></b>{% endblock %}
 
-        <li class="logo_menu">
-            <a href="PaginaPortada.html">
-                <img src="{% static 'img/logo.png' %}">
-            </a>
-        </li>
-    </ul>
 
-    <main>
-        <h2>Registro de Venta</h2>
+{% block content %}
         <div class="contenedor-principal">
             <div class="main-content">
                 <!-- Columna izquierda: Datos predefinidos y datos del producto -->
                 <section class="formulario">
                     <div class="cuadro-datos datos-predefinidos">
-                        <h3>Datos Predefinidos</h3>
+                        <h3><u>Datos Predefinidos<b></b></u></h3><br>
                         <form method="POST">
                             <div class="fila">
                                 <div class="campo">
@@ -87,41 +58,35 @@
                     </div>
 
                     <div class="cuadro-datos">
-                        <h3>Datos del Producto</h3>
+                        <h3><u><b>Datos del Producto</b></u></h3><br>
                         <form method="POST">
                             <div class="fila">
                                 <div class="campo">
                                     <label for="producto">Producto</label>
-                                    <input type="text" id="producto">
+                                    <input type="text" placeholder="Ingrese la descripción.." id="producto">
                                 </div>
                                 <div class="campo">
                                     <label for="precio">Precio / unidad</label>
-                                    <input type="number" id="precio" min="0.01" step="0.01" required>
+                                    <input type="number" id="precio" min="0.01" step="0.01" placeholder="precio por unidad.." required>
                                 </div>
                                 <div class="campo">
                                     <label for="cantidad">Cantidad</label>
-                                    <input type="number" id="cantidad" min="1" required>
+                                    <input type="number" id="cantidad" min="1" placeholder="Ingrese la cantidad.." required>
                                 </div>
                             </div>
                             <button type="button" id="agregar-btn">Agregar</button>
 
                         </form>
                     </div>
-                    {% block content %}
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                    </form>
-                    {% endblock %}
                 </section>
 
                 <!-- Columna derecha: Tabla de productos y botones -->
                 <section class="tabla-productos">
                     <div class="cuadro-tabla">
-                        <h3>Detalles</h3>
+                        <h3><u><b>Detalles</b></u></h3><br>
                         <table>
                             <thead>
-                                <tr>
+                                <tr class="fila-tabla">
                                     <th>ID</th>
                                     <th>Producto</th>
                                     <th>Categoría</th>
@@ -137,7 +102,7 @@
 
                         <div class="total-pagar">
                             <span>TOTAL A PAGAR</span>
-                            <input type="text" disabled>
+                            <input type="text" id="campo-input" disabled>
                         </div>
 
                         <div class="acciones-tabla">
@@ -150,11 +115,4 @@
             </div>
         </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Panadería El Maná. Todos los derechos reservados de autor.</p>
-    </footer>
-    <script src="{% static 'js/validaciones-ventas.js' %}"></script>
-
-
-</body>
-</html>
+{% endblock %}
