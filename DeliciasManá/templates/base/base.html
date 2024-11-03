@@ -5,13 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panaderia El Maná</title>
-    <link rel="stylesheet" href="{% static 'css/estilos-pagPrincipal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% block head %} {% endblock %}
 </head>
 
 <body>
+
+    <ul>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn"> <img src="{% static 'img/barra_menu.png' %}"> </a>
+            <div class="dropdown-content">
+                <a href="/gestion_productos">Gestión de Productos</a>
+                <a href="/gestion_insumos">Pedidos a Proveedores</a>
+                <a href="/gestion_ventas">Gestión de Ventas</a>
+                <a href="/gestion_empleados/formulario/">Gestión de Empleados</a>
+                <a href="clientes_mayoristas.html">Clientes Mayoristas</a>
+                <a href="reportes.html">Reportes</a>
+                <a href="contacto.html">Contactos</a>
+            </div>
+        </li>
+
+        <li class="menu-title">{% block title%} {% endblock %}</li>
+
+        <li class="logo_menu">
+            <a href="/">
+                <img src="{% static 'img/logo.png' %}">
+            </a>
+        </li>
+    </ul>
+
     {% block content %}
 
     {% endblock %}
