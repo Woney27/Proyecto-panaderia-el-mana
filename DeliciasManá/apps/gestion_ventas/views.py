@@ -17,3 +17,7 @@ def registrar_ventas(request):
     else:
         form = VentaForm()
     return render(request, 'gestion_ventas/gestion_ventas.html', {'form': form})
+
+
+def registrar_cliente_mayorista(request):
+    return render(request, 'gestion_ventas/clientes_mayoristas.html')

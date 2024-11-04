@@ -1,0 +1,70 @@
+{% extends 'base/base.html'%}
+{% load static %}
+{% block head %}
+    <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos-clientes.css' %}">
+    <script src="{% static 'js/validaciones-clientes.js'%}"></script>
+{% endblock %}
+
+
+{% block title %}<b><u>Gestion de Clientes Mayoristas</u></b>{% endblock %}
+
+
+{% block content %}
+    <div class="grid-container">
+        <!-- Formulario para agregar productos -->
+        <form class="form-agregar-cliente" action="#" method="POST">
+             {% csrf_token %}
+            <fieldset>
+                <legend>Agregar Cliente</legend>
+                <div>
+                    <label for="razonSocial">Razón Social:</label>
+                    <input type="text" id="razonSocial" name="razonSocial" required>
+                </div>
+                <div>
+                    <label for="cuit">CUIT:</label>
+                    <input type="text" id="cuit" name="cuit" required>
+                </div>
+                <div class="campo-doble">
+                    <div>
+                        <label for="domicilio">Domicilio Fiscal:</label>
+                        <input type="text" id="domicilio" name="domicilio" required>
+                    </div>
+                    <div>
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                <button type="submit">Agregar Cliente Mayorista</button>
+                <button type="button" id="cancelar">Cancelar</button>
+            </fieldset>
+        </form> 
+        <!-- Tabla de clientes -->
+        <div class="tabla-cliente">
+            <fieldset>
+                <legend>Listado de Clientes Mayoristas</legend>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Razon Social</th>
+                            <th>Cuit</th>
+                            <th>Domicilio Fiscal</th>
+                            <th>Telefono</th>
+                            <th>Correo</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                <label for="buscar">Buscar cliente:</label>
+                <input type="text" id="buscar" placeholder="Buscar por Razón Social...">
+            </fieldset>
+        </div>
+    </div>
+{% endblock %}
