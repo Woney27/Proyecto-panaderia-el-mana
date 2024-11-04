@@ -86,13 +86,14 @@ table {
 
 table, th, td {
     background-color: #8b4513;
+    color: white;
+    border: 1px solid  white;
 }
 
 th, td {
     padding: 10px;
     text-align: center;
     word-wrap: break-word;
-    
     background-color: #8b4513;
 }
 

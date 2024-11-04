@@ -113,7 +113,7 @@ fieldset {
 
 .tabla-productos th {
     padding: 10px;
-    border: 1px solid  #8b4513; /* Bordes suaves */
+    border: 1px solid  white; /* Bordes suaves */
     text-align: center; 
     background-color:  #8b4513; /* Color de fondo para encabezados */
     color:white; /* Color del texto */
@@ -122,9 +122,9 @@ fieldset {
 
 .tabla-productos td {
     padding: 10px;
-    border: 1px solid #ddd; /* Igual que el borde de th */
+    border: 1px solid black; /* Igual que el borde de th */
     text-align: center;
-    color: #555; /* Color más suave para el texto de las celdas */
+    color:black; /* Color más suave para el texto de las celdas */
 }
 
 .tabla-productos tr:hover {
