@@ -10,55 +10,46 @@
 {% block content %}
 
     <div class="grid-container">
-            <form id="form-producto" class="form-agregar-producto" action="#">
+        <form class="form-agregar-producto" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <fieldset>
-            <legend>Registrar Producto</legend>
+                <legend>Registrar Producto</legend>
+
                 <div>
-                    <label for="descrip-producto">Descripción del Producto</label>
-                    <textarea id="descrip-producto" rows="1" cols="20" required placeholder="Escriba la descripción del producto.."></textarea>
+                    {{ form.descripcion.label_tag }}
+                    {{ form.descripcion }}
                 </div>
 
-                <!-- Agrupación de "Unidad / medida" y "Cantidad disponible" en una fila -->
                 <div class="campo-doble">
                     <div>
-                        <label for="unidad-medida">Unidad / medida</label>
-                        <select id="unidad-medida">
-                            <option value="">Selecciones una opción...</option>
-                            <option value="Kilogramos">Kilogramos</option>
-                            <option value="Gramos">Gramos</option>
-                            <option value="Unidad">Unidad</option>
-                        </select>
+                        {{ form.unidad_medida.label_tag }}
+                        {{ form.unidad_medida }}
                     </div>
                     <div>
-                        <label class="cantidad" for="cantidad">Cantidad disponible</label>
-                        <input type="number" id="cantidad" min="0" placeholder="Ingrese una cantidad.." required>
+                        {{ form.cantidad_disponible.label_tag }}
+                        {{ form.cantidad_disponible }}
                     </div>
                 </div>
 
-                <!-- Agrupación de "Precio / unidad" y "Punto de reposición" en otra fila -->
                 <div class="campo-doble">
                     <div>
-                        <label for="precio">Precio / unidad</label>
-                        <input type="number" id="precio" min="0" step="0.01" placeholder="Ingrese una precio por unidad de unidad medida.." required>
+                        {{ form.precio_unidad.label_tag }}
+                        {{ form.precio_unidad }}
                     </div>
                     <div>
-                        <label for="punto-reposicion">Punto de reposición</label>
-                        <input type="number" id="punto-reposicion" min="0" placeholder="Ingrese un valor.." required>
+                        {{ form.punto_reposicion.label_tag }}
+                        {{ form.punto_reposicion }}
                     </div>
                 </div>
 
                 <div>
-                    <label for="categoriaProduc">Categoría de producto</label>
-                    <select id="categoriaProduc">
-                        <option value="">Selecciones una opción..</option>
-                        <option value="Panificacion">Panificación</option>
-                        <option value="Pasteleria">Pastelería</option>
-                    </select>
+                    {{ form.categoria.label_tag }}
+                    {{ form.categoria }}
                 </div>
 
                 <button class="boton-registrar" type="submit">Guardar</button>
                 <button class="boton-cancelar" type="reset">Cancelar</button>
-                </fieldset>
+            </fieldset>
         </form>
 
         <div class="tabla-productos">
@@ -76,7 +67,22 @@
                             <th>Editar/Eliminar</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        {% for producto in productos %}
+                        <tr>
+                            <td>{{ producto.id }}</td>
+                            <td>{{ producto.descripcion }}</td>
+                            <td>{{ producto.categoria }}</td>
+                            <td>{{ producto.cantidad_disponible }}</td>
+                            <td>{{ producto.unidad_medida }}</td>
+                            <td>{{ producto.precio_unidad }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7">No hay productos disponibles.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </fieldset>
         </div>
