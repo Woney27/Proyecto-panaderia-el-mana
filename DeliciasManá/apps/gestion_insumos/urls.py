@@ -3,6 +3,6 @@ from . import views
 
 app_name = 'apps.gestion_insumos'
 urlpatterns = [
-    path('', views.pedir_insumos)
+    path('', views.registrar_insumos),
+    path('/pedir_insumos', views.pedir_insumos)
 ]
-

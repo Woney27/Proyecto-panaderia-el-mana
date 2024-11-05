@@ -1,5 +1,5 @@
 from django.urls import reverse 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib import messages
@@ -18,7 +18,31 @@ def registrar_productos(request):
             return redirect(reverse('apps.gestion_productos:registrar_productos'))
     else:
         producto_form = ProductoForm()
-    productos = Producto.objects.all()
+    productos = Producto.objects.all().order_by('id')
     return render(request, 'gestion_productos/registro_productos.html', {'form': producto_form, 'productos': productos})
 
-    return HttpResponse("Error: Solicitud no procesada correctamente.")
+
+def modificar_producto(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)  # Obtener el producto por ID
+    if request.method == 'POST':
+        producto_form = ProductoForm(request.POST, instance=producto)  # Pasar la instancia al formulario
+        if producto_form.is_valid():
+            producto_form.save()  # Guardar el producto modificado
+            return redirect('apps.gestion_productos:registrar_productos')  # Redirigir después de guardar
+    else:
+        producto_form = ProductoForm(instance=producto)  # Crear el formulario con la instancia existente
+    productos = Producto.objects.all().order_by('id')
+    return render(request, 'gestion_productos/registro_productos.html', {'form': producto_form, 'productos': productos})
+
+
+def eliminar_producto(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)  # Obtener el producto por ID
+
+    if request.method == 'POST':
+        producto.delete()  # Eliminar el producto
+        messages.success(request, 'Producto eliminado exitosamente.')
+        return redirect('apps.gestion_productos:registrar_productos')  # Redirigir después de eliminar
+
+    productos = Producto.objects.all().order_by('id')
+    return render(request, 'gestion_productos/registro_productos.html', {'productos': productos})
+

@@ -55,35 +55,45 @@
         <div class="tabla-productos">
             <fieldset>
                 <legend>Productos</legend>
-                <table id="productos">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Descripción</th>
-                            <th>Categoría</th>
-                            <th>Cantidad disponible</th>
-                            <th>Unidad</th>
-                            <th>Precio/unidad</th>
-                            <th>Editar/Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for producto in productos %}
-                        <tr>
-                            <td>{{ producto.id }}</td>
-                            <td>{{ producto.descripcion }}</td>
-                            <td>{{ producto.categoria }}</td>
-                            <td>{{ producto.cantidad_disponible }}</td>
-                            <td>{{ producto.unidad_medida }}</td>
-                            <td>{{ producto.precio_unidad }}</td>
-                        </tr>
-                        {% empty %}
-                        <tr>
-                            <td colspan="7">No hay productos disponibles.</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+
+                <div class="tabla-scroll">
+                    <table id="productos">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Descripción</th>
+                                <th>Categoría</th>
+                                <th>Cantidad disponible</th>
+                                <th>Unidad</th>
+                                <th>Precio/unidad</th>
+                                <th>Editar/Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for producto in productos %}
+                            <tr>
+                                <td>{{ producto.id }}</td>
+                                <td>{{ producto.descripcion }}</td>
+                                <td>{{ producto.categoria }}</td>
+                                <td>{{ producto.cantidad_disponible }}</td>
+                                <td>{{ producto.unidad_medida }}</td>
+                                <td>{{ producto.precio_unidad }}</td>
+                                <td>
+                                    <a href="{% url 'apps.gestion_productos:modificar_producto' producto.id %}" >Modificar</a>
+                                    <form method="POST" action="{% url 'apps.gestion_productos:eliminar_producto' producto.id %}" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="boton-eliminar">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="7">No hay productos disponibles.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </fieldset>
         </div>
     </div>

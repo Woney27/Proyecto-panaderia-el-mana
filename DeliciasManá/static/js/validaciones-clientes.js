@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault(); // Evita que se recargue la página
 
         // Validaciones
-        if (!validarCUIT(cuit.value)) {
+        if (!validarCUIT(cuit.value())) {
             alert("Por favor, ingrese un CUIT válido (solo números, 11 dígitos).");
             return;
         }

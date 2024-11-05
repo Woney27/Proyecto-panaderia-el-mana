@@ -19,7 +19,7 @@ body {
     gap: 10px;
 }
 
-.formulario, 
+.formulario,
 .tabla-empleados {
     flex-grow: 1;
 }
@@ -62,12 +62,14 @@ table th,
 table td {
     border-color: #8b4513;
     padding: 8px;
+    border: 1px solid black;
     text-align: center;
-    background-color:#8b4513;
+    background-color: #f0eded;
 }
 
 table th {
     background-color: #8b4513;
+    border: 1px solid white;
     color: #fff;
 }
 
