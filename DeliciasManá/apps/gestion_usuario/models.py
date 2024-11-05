@@ -1,6 +1,10 @@
 from django.db import models
 
-class persona(models.Model):
+
+class Usuario(models.Model):
     nombre = models.CharField(max_length=30)
-    CUIT = models.ForeignKey
+    domicilio = models.CharField(max_length=150, )
+    cuil = models.PositiveIntegerField(unique=True)
+    email = models.CharField(max_length=100)
+
     

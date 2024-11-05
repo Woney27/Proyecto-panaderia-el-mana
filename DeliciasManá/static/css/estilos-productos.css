@@ -104,6 +104,11 @@ fieldset {
     box-shadow: 0 0 5px rgb(0, 0, 0);
 }
 
+.tabla-scroll {
+    max-height: 500px; /* Ajusta el alto máximo para el scroll */
+    overflow-y: auto; /* Habilita solo el scroll vertical */
+}
+
 .tabla-productos table {
     width: 100%;
     border-collapse: collapse;

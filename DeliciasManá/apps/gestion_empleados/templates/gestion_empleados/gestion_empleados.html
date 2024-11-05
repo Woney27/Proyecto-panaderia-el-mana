@@ -12,56 +12,48 @@
                 <section class="formulario">
                     <div class="cuadro-datos datos-personales">
                         <h3><u><b>Datos Personales</b></u></h3>
-                        <form id="formulario-empleado" method="POST">
+                        <form class="formulario-empleado" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="fila">
                                 <div class="campo">
-                                    <label for="nombre">Nombre Completo</label>
-                                    <input type="text" name="nombre" id="nombre" required>
+                                    {{ form.nombre.label_tag }}
+                                    {{ form.nombre }}
                                 </div>
                                 <div class="campo">
-                                    <label for="cuit">Cuit</label>
-                                    <input type="text" name="cuit" id="cuit" pattern="\d{11}" title="El CUIT debe tener exactamente 11 dígitos" required>
+                                    {{ form.cuit.label_tag }}
+                                    {{ form.cuit }}
                                 </div>
                                 <div class="campo">
-                                    <label for="domicilio">Domicilio</label>
-                                    <input type="text" name="domicilio" id="domicilio" required>
+                                    {{ form.domicilio.label_tag }}
+                                    {{ form.domicilio }}
                                 </div>
                             </div>
                             <div class="fila">
                                 <div class="campo">
-                                    <label for="telefono">Teléfono</label>
-                                    <input type="tel" name="telefono" id="telefono" pattern="\d{10}" title="Debe ser un número de 10 dígitos" required>
+                                    {{ form.telefono.label_tag }}
+                                    {{ form.telefono }}
                                 </div>
                                 <div class="campo">
-                                    <label for="fecha-nac">Fecha de nacimiento</label>
-                                    <input type="date" name="fechaNacimiento" id="fecha-nac" required>
+                                    {{ form.fecha_nacimiento.label_tag }}
+                                    {{ form.fecha_nacimiento }}
                                 </div>
                             </div>
+
+
                             <div class="cuadro-datos datos-cargo">
                                 <h3><u><b>Datos del Cargo</b></u></h3>
                                 <div class="fila">
                                     <div class="campo">
-                                        <label for="cargo">Cargo</label>
-                                        <select name="cargo" id="cargo">
-                                            <option>Seleccionar el cargo</option>
-                                            <option value="vendedor">Vendedor</option>
-                                            <option value="administrador">Administrador</option>
-                                            <option value="gerente">Gerente</option>
-                                            <option value="recepcionista">Recepcionista</option>
-                                            <option value="reponedor">Reponedor</option>
-                                        </select>
+                                        {{ form.cargo.label_tag }}
+                                        {{ form.cargo }}
                                     </div>
                                     <div class="campo">
-                                        <label for="fecha-ingreso">Fecha de Ingreso</label>
-                                        <input type="date" name="fechaIngreso" id="fecha-ingreso" required>
+                                        {{ form.fecha_ingreso.label_tag }}
+                                        {{ form.fecha_ingreso }}
                                     </div>
                                     <div class="campo">
-                                        <label for="estado">Estado</label>
-                                        <select id="estado" name="estadoLaboral" required>
-                                            <option value="activo" selected>Activo</option>
-                                            <option value="inactivo">Inactivo</option>
-                                        </select>
+                                        {{ form.estado.label_tag }}
+                                        {{ form.estado }}
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +80,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Filas generadas dinámicamente -->
+                                {% for empleado in empleados %}
+                                <tr>
+                                    <td>{{ empleado.id }}</td>
+                                    <td>{{ empleado.cuit }}</td>
+                                    <td>{{ empleado.nombre }}</td>
+                                    <td>{{ empleado.cargo }}</td>
+                                    <td>{{ empleado.estado }}</td>
+                                    <td>{{ empleado.fecha_ingreso }}</td>
+                                    <td>{{ empleado.telefono }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="7">No hay empleados cargados.</td>
+                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
 <br><br>
@@ -104,4 +110,3 @@
             </div>
         </div>
 {% endblock %}
-

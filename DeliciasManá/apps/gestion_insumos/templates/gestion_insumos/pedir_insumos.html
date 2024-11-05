@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/estilos-pagInsumos.css' %}">
+    <script src="{% static 'js/insumos.js' %}"></script>
+{% endblock %}
+{% block title%} <u><b>Pedir Insumo</b></u> {% endblock %}
+{% block content %}
+<section class="container">
+    <div class="predefinidos">
+        <strong><h2>Datos Predefinidos</h2></strong>
+
+        <label for="pedidoNum">Pedido Nº</label>
+        <input type="text" id="pedidoNum" placeholder="Auto-generado" readonly>
+
+        <label for="fecha-solicitud">Fecha de solicitud</label>
+        <input type="date" id="fecha-solicitud">
+
+        <label for="idProveedor">ID Proveedor</label>
+        <input type="text" id="idProveedor" placeholder="Ingrese ID proveedor...">
+    </div>
+
+    <div class="producto">
+        <h2>Datos del Insumo</h2>
+
+        <label for="insumo">Insumo</label>
+        <input type="text" id="insumo" placeholder="Ingrese la descripcion del insumo...">
+
+        <label for="cantidad">Cantidad</label>
+        <input type="number" id="cantidad" placeholder="Ingrese la cantidad del insumo..">
+
+        <button id="agregarProducto">Agregar</button>
+    </div>
+
+    <div class="detalles">
+        <h2>Detalles del Pedido</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Insumo</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="listaInsumos">
+            </tbody>
+        </table>
+        <br><br>
+
+        <div class="acciones">
+            <button id="cancelar" class="btn">Cancelar</button>
+            <button id="registrar" class="btn">Registrar</button>
+        </div>
+    </div>
+</section>
+{% endblock %}

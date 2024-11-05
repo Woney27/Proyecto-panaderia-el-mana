@@ -38,6 +38,7 @@ fieldset {
 /* Formularios */
 .form-agregar-cliente {
     width: 40%;
+    height: 550px;
     background-color: #f0eded;
     padding: 20px;
     border-radius: 15px;
@@ -55,12 +56,7 @@ fieldset {
     margin-bottom: 5px;
 }
 
-.form-agregar-cliente input[type="text"],
-.form-agregar-cliente input[type="number"],
-.form-agregar-cliente input[type="tel"],
-.form-agregar-cliente input[type="email"],
-.form-agregar-cliente select,
-.form-agregar-cliente textarea {
+.form-agregar-cliente input{
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -70,9 +66,7 @@ fieldset {
     transition: border-color 0.2s ease;
 }
 
-.form-agregar-cliente input:focus,
-.form-agregar-cliente select:focus,
-.form-agregar-cliente textarea:focus {
+.form-agregar-cliente input:focus{
     border-color: #ffa500;
     outline: none;
 }
@@ -95,7 +89,7 @@ fieldset {
 
 /* Tabla de productos */
 .tabla-cliente {
-    width: 55%;
+    width: 60%;
     background-color: #f0eded;
     padding: 20px;
     border-radius: 15px;
@@ -104,6 +98,11 @@ fieldset {
     align-items: center;
     margin-left: 20px;
     box-shadow: 0 0 5px rgb(0, 0, 0);
+}
+
+.tabla-scroll {
+    max-height: 100px; /* Ajusta el alto máximo para el scroll */
+    overflow-y: auto; /* Habilita solo el scroll vertical */
 }
 
 .tabla-cliente table {
@@ -116,7 +115,7 @@ fieldset {
 .tabla-cliente th {
     padding: 10px;
     border: 1px solid  #8b4513; /* Bordes suaves */
-    text-align: center; 
+    text-align: center;
     background-color:  #8b4513; /* Color de fondo para encabezados */
     color:white; /* Color del texto */
     font-weight: bold; /* Hacer que los encabezados sean más prominentes */
@@ -124,9 +123,9 @@ fieldset {
 
 .tabla-cliente td {
     padding: 10px;
-    border: 1px solid #ddd; /* Igual que el borde de th */
+    border: 1px solid black; /* Igual que el borde de th */
     text-align: center;
-    color: #555; /* Color más suave para el texto de las celdas */
+    color: black; /* Color más suave para el texto de las celdas */
 }
 
 .tabla-cliente tr:hover {

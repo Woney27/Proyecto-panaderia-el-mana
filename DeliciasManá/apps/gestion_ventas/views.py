@@ -1,10 +1,8 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import VentaForm, ItemForm
-from .models import Venta, Item, ClienteMayorista
-from django.views.generic.edit import FormView
-from django.forms import formset_factory
-from django.forms import modelformset_factory
+from .forms import VentaForm, ItemForm, MayoristaForm
+from django.urls import reverse
+from apps.gestion_ventas.models import Venta, Item, ClienteMayorista
 
 
 def registrar_ventas(request):
@@ -20,4 +18,21 @@ def registrar_ventas(request):
 
 
 def registrar_cliente_mayorista(request):
-    return render(request, 'gestion_ventas/clientes_mayoristas.html')
+    nuevo_mayorista = None
+    if request.method == 'POST':
+        mayorista_form = MayoristaForm(request.POST)
+        if mayorista_form.is_valid():
+            print("Formulario válido")
+            nuevo_mayorista = mayorista_form.save(commit=False)
+            nuevo_mayorista.save()
+            messages.success(request, 'Se ha registrado correctamente el cliente mayorista.')
+            return redirect(reverse('apps.gestion_ventas:mayoristas'))
+        else:
+            print("Formulario no válido")
+            print(mayorista_form.errors)
+            messages.error(request, "Error al guardar el formulario. Verifica los campos.")
+    else:
+        mayorista_form = MayoristaForm()
+    mayoristas = ClienteMayorista.objects.all()
+    return render(request, 'gestion_ventas/clientes_mayoristas.html',
+                  {'form': mayorista_form, 'mayoristas': mayoristas})
