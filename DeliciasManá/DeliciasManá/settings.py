@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'apps.gestion_usuario',
     'apps.gestion_ventas',
     'apps.gestion_productos',
-    'apps.gestion_empleados'
+    'apps.gestion_empleados',
+    'apps.gestion_reporte',
+    'apps.gestion_proveedores'
 ]
 
 AUTH_USER_MODEL = 'gestion_usuario.Usuario'

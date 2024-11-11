@@ -1,0 +1,96 @@
+{% extends 'base/base.html'%}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/estilos-proveedores.css' %}">
+<script src="{% static 'js/validaciones-proveedores.js'%}"></script>
+{% endblock %}
+
+{% block title %}<b><u>Gestion de Proveedores</u></b>{% endblock %}
+
+{% block content %}
+    <div class="grid-container">
+        <form class="form-agregar-proveedor" action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Agregar Proveedor</legend>
+
+                <div>
+                    {{ form.razonSocial.label_tag }}
+                    {{ form.razonSocial }}
+                </div>
+
+                <div>
+                    {{ form.cuit.label_tag }}
+                    {{ form.cuit }}
+                </div>
+
+                <div class="campo-doble">
+                    <div>
+                        {{ form.domicilio.label_tag }}
+                        {{ form.domicilio }}
+                    </div>
+                    <div>
+                        {{ form.telefono.label_tag }}
+                        {{ form.telefono }}
+                    </div>
+                </div>
+
+                <div>
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                </div>
+
+                <button type="submit">Agregar Proveedor</button>
+                <button type="reset">Cancelar</button>
+            </fieldset>
+        </form>
+
+        <!-- Tabla de proveedores -->
+        <div class="tabla-proveedor">
+            <fieldset>
+                <legend>Listado de Proovedores</legend>
+
+                <div class="tabla-scoll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Razon Social</th>
+                                <th>Cuit</th>
+                                <th>Domicilio Fiscal</th>
+                                <th>Telefono</th>
+                                <th>Correo</th>
+                                <th>Editar/Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for proveedor in proveedores%}
+                            <tr>
+                                <td>{{ proveedor.id }}</td>
+                                <td>{{ proveedor.razonSocial }}</td>
+                                <td>{{ proveedor.cuit }}</td>
+                                <td>{{ proveedor.domicilio }}</td>
+                                <td>{{ proveedor.telefono }}</td>
+                                <td>{{ proveedor.email }}</td>
+                                <td>
+                                    <a href="{% url 'apps.gestion_proveedores:modificar_proveedor' proveedor.id %}">Modificar</a>
+                                    <form method="POST" action="{% url 'apps.gestion_proveedores:eliminar_proveedor' proveedor.id %}" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="boton-eliminar">Eliminar</button>
+                                    </form>
+                                </td>
+                                {% empty %}
+                            <tr>
+                                <td colspan="7">No hay proveedores cargados.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <label for="buscar">Buscar proveedor:</label>
+                <input type="text" id="buscar" placeholder="Buscar por Razón Social...">
+            </fieldset>
+        </div>
+    </div>
+{% endblock %}

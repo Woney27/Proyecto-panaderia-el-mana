@@ -1,0 +1,216 @@
+/* Reset de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo general */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color:#8b4513; /* Color de texto para contraste */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Contenedor principal */
+.contenedor-principal {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    font-size: 36px;
+    color:black;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 28px;
+    color:black;
+    margin-bottom: 20px;
+}
+
+/* Estilo de tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border-color: black;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: #f0eded;
+}
+
+table th {
+    background-color: #8b4513;
+    color: #fff;
+    font-size: 18px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+table tr:hover {
+    background-color: #d1c7a3; /* Color de fondo al pasar el mouse */
+}
+
+/* Botones */
+button {
+    background-color: #ffa500;
+    border: none;
+    padding: 12px 25px; /* Ajusta el tamaño */
+    border-radius: 25px; /* Esquinas más redondeadas */
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Efecto de transición */
+}
+
+button:hover {
+    background-color: #e69500;
+}
+
+/* Estilo de contenido en secciones */
+.datos-predefinidos, .cuadro-tabla {
+    background-color: #f0eded;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+}
+
+.datos-predefinidos h3, .cuadro-tabla h3 {
+    font-size: 22px;
+    color: #8b4513;
+    margin-bottom: 15px;
+}
+
+/* Espacio para las métricas de reporte (Ventas, Empleados, etc.) */
+.metrica {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0eded;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+}
+
+.metrica strong {
+    font-size: 20px;
+    color: black;
+}
+
+/* Contenedor para el reporte de ventas */
+.reporte-ventas {
+    margin-bottom: 30px;
+}
+
+.reporte-ventas p {
+    font-size: 18px;
+    margin: 10px 0;
+    color:black;
+}
+
+/* Estilo para productos más vendidos */
+.productos-mas-vendidos table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.productos-mas-vendidos td {
+    font-size: 16px;
+}
+
+/* Estilo para los productos faltantes */
+.productos-faltantes table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.productos-faltantes td {
+    font-size: 16px;
+}
+
+/* Diseño del formulario */
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Estilo de las filas de productos en la tabla de productos faltantes */
+.fila {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 20px; /* Espacio entre los campos */
+}
+
+.campo {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.campo:last-child {
+    margin-right: 0;
+}
+
+/* Mejoras en el diseño del contenedor de cada sección */
+.cuadro-datos {
+    border: 1px solid #ccc; /* Borde del cuadro */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    margin: 20px;
+    background-color: #f0eded;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+}
+
+.cuadro-datos h3 {
+    margin: 0 0 10px; /* Espacio inferior del encabezado */
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 768px) {
+    .contenedor-principal {
+        padding: 15px;
+    }
+
+    table th, table td {
+        font-size: 14px;
+    }
+
+    .metrica {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .fila {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
