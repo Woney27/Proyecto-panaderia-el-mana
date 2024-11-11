@@ -2,72 +2,76 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/estilos-pagProveedores.css' %}">
-<script src="{% static 'js/insumos.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/estilos-pagProveedores.css' %}">
+    <script src="{% static 'js/pedidos.js' %}"></script>
 {% endblock %}
-{% block title%} <u><b>Registrar Insumo</b></u> {% endblock %}
+{% block title%} <u><b>Pedir Insumo</b></u> {% endblock %}
 {% block content %}
 <section class="container">
-    <div class="predefinidos">
-        <strong><h2>Datos Predefinidos</h2></strong>
+    <form class="formulario-pedido" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="predefinidos">
+            <strong><h2>Datos</h2></strong>
 
-        <label for="pedidoNum">Pedido Nº</label>
-        <input type="text" id="pedidoNum" placeholder="Auto-generado" readonly>
+                {{ form.pedidoNum.label_tag }}
+                {{ form.pedidoNum }}
 
-        <label for="fecha">Fecha</label>
-        <input type="date" id="fecha">
+                {{ form.fecha_solicitud.label_tag }}
+                {{ form.fecha_solicitud }}
 
-        <label for="idProveedor">ID Proveedor</label>
-        <input type="text" id="idProveedor" placeholder="Ingrese ID proveedor...">
+                {{ form.idProveedor.label_tag }}
+                {{ form.idProveedor }}
 
-        <label for="numComprobante">Nº Comprobante</label>
-        <input type="text" id="numComprobante" placeholder="Ingrese N° comprobante">
+                {{ form.numComprobante.label_tag }}
+                {{ form.numComprobante }}
 
-        <label for="tipoPago">Forma de pago</label>
-        <select id="tipoPago">
-            <option value="Efectivo">Efectivo</option>
-            <option value="Transferencia">Transferencia</option>
-            <option value="Tarjeta">Tarjeta</option>
-        </select>
-    </div>
+                {{ form.tipoPago.label_tag }}
+                {{ form.tipoPago }}
+        </div>
 
-    <div class="producto">
-        <h2>Datos del Producto</h2>
+        <div class="producto">
+            <h2>Datos del Producto</h2>
 
-        <label for="producto">Producto</label>
-        <input type="text" id="producto" placeholder="Ingrese el producto...">
+            {{ form.producto.label_tag }}
+            {{ form.producto }}
 
-        <label for="precioUnidad">Precio / unidad</label>
-        <input type="number" id="precioUnidad" placeholder="$ Auto-generado" readonly >
+            {{ form.cantidad.label_tag }}
+            {{ form.cantidad }}
 
-        <label for="cantidad">Cantidad</label>
-        <input type="number" id="cantidad" min="1" max="500" placeholder="Ingrese la cantidad...">
-
-        <button id="agregarProducto">Agregar</button>
-    </div>
-
+            <button id="agregarProducto">Agregar</button>
+        </div>
+    </form>
     <div class="detalles">
         <h2>Detalles del Pedido</h2>
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Producto</th>
-                    <th>Categoría</th>
                     <th>Cantidad</th>
-                    <th>Precio / unidad</th>
-                    <th>Total</th>
+                    <th>Editar/Eliminar</th>
+
                 </tr>
             </thead>
             <tbody id="listaInsumos">
+                {% for pedido in Pedidos %}
+                    <tr>
+                        <td>{{ pedido.producto }}</td>
+                        <td>{{ pedido.cantidad }}</td>
+                        <td>
+                            <a href="{% url 'apps.gestion_insumos:modificar_pedido' pedido.id %}" > <button type="submit" class="boton-modificar">Modificar</button></a>
+                            <form method="POST" action="{% url 'apps.gestion_insumos:eliminar_pedido' pedido.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="boton-eliminar">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="7">No hay productos registrados.</td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
-
-        <div class="total">
-            <label for="total">Total a Pagar</label>
-            <input type="text" id="total" readonly placeholder="$ 0.00">
-        </div>
-
         <div class="acciones">
             <button id="cancelar" class="btn">Cancelar</button>
             <button id="registrar" class="btn">Registrar</button>
