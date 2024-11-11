@@ -12,34 +12,32 @@ body {
     min-height: 100vh;
 }
 
-header {
-    background-color: #8b4513;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
 .container {
+    width: 72%;
     display: flex;
     justify-content: space-around;
     padding: 20px;
     background-color: #fff;
     margin:auto;
-    margin-left: 20px;
-    margin-right: 20px;
     border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.predefinidos, .producto, .detalles {
-    width: 32%;
+.detalles {
+    width: 90%;
     background-color: #f0eded;
     padding: 20px;
+    margin-left: 20px;
     border-radius: 20px;
     box-shadow: 0 0 5px rgb(0, 0, 0);
 }
-.detalles{
+ .producto{
+    width: 100%;
+    background-color: #f0eded;
     padding: 20px;
+    margin-right: 20px;
+    margin-top:50px;
+    border-radius: 20px;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
 }
 h2 {
     font-size: 1.2em;
@@ -89,12 +87,23 @@ table, th, td {
     color: white;
     border: 1px solid  white;
 }
+ td {
+    background-color: #8b4513;
+    color: black;
+    border: 1px solid  black;
+}
 
-th, td {
+th {
     padding: 10px;
     text-align: center;
     word-wrap: break-word;
     background-color: #8b4513;
+}
+td {
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word;
+    background-color: white;
 }
 
 .detalles table {

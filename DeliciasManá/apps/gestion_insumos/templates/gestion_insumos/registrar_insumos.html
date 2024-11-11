@@ -1,0 +1,69 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/estilos-pagInsumos.css' %}">
+    <script src="{% static 'js/insumos.js' %}"></script>
+{% endblock %}
+{% block title%} <u><b>Registrar Insumo</b></u> {% endblock %}
+{% block content %}
+<section class="container">
+    <form class="formulario-insumo" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="producto">
+            <strong><h2>Datos del Insumo</h2></strong>
+
+                {{ form.insumo.label_tag }}
+                {{ form.insumo }}
+
+                {{ form.cantidad.label_tag }}
+                {{ form.cantidad }}
+
+                {{ form.unidad.label_tag }}
+                {{ form.unidad }}
+
+            <button id="agregarProducto">Agregar</button>
+        </div>
+    </form>
+
+    <div class="detalles">
+        <h2>Insumos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Insumo</th>
+                    <th>Cantidad</th>
+                    <th>Unidad</th>
+                    <th>Editar/Eliminar</th>
+
+                </tr>
+            </thead>
+            <tbody id="listaInsumos">
+                {% for insumo in insumos %}
+                    <tr>
+                        <td>{{ insumo.id }}</td>
+                        <td>{{ insumo.insumo }}</td>
+                        <td>{{ insumo.cantidad }}</td>
+                        <td>{{ insumo.unidad }}</td>
+                        <td>
+                            <a href="{% url 'apps.gestion_insumos:modificar_insumo' insumo.id %}" > <button type="submit" class="boton-modificar">Modificar</button></a>
+                            <form method="POST" action="{% url 'apps.gestion_insumos:eliminar_insumo' insumo.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="boton-eliminar">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="7">No hay insumos registrados.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+        <br><br>
+    </div>
+</section>
+{% endblock %}
