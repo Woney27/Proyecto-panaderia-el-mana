@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/estilos-login.css' %}">
+{% endblock %}
+
+{% block title %}Inicio de Sesión{% endblock %}
+
+{% block content %}
+
+    <div class="contenedor_login">
+        <h1>Login de Usuario</h1>
+        <br>
+        <p>Ingrese sus credenciales para ingresar al Sistema</p>
+        <br>
+        <form class="form-login" method="post">
+            {% csrf_token %}
+            <div>
+                <label for="username">Nombre de Usuario: </label> <br>
+                <input type="text" id="username" name="username">
+            </div>
+            <br>
+            <div>
+                <label for="passw">Contraseña: </label> <br>
+                <input type="password" id="passw" name="password">
+            </div>
+            <br>
+            <button type="submit">LOGIN</button>
+        </form>
+    </div>
+
+{% endblock %}

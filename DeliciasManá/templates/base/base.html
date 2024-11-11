@@ -36,7 +36,21 @@
                 <img src="{% static 'img/logo.png' %}">
             </a>
         </li>
+
     </ul>
+
+    <div class="usuario">
+
+        {% if user.is_authenticated %}
+        <div class="username">
+                {{ user.username }}
+            <a  href="/usuarios/logout">Cerrar sesión</a>
+         </div>
+        {% else %}
+            <a class="login" href="/usuarios/login">Iniciar sesión</a>
+        {% endif %}
+    </div>
+
 
     {% block content %}
 

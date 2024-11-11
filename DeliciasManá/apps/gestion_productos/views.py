@@ -5,8 +5,10 @@ from django.urls import reverse
 from django.contrib import messages
 from .forms import ProductoForm
 from apps.gestion_productos.models import Producto
+from django.contrib.auth.decorators import login_required, permission_required
 
 
+@login_required(login_url='apps.gestion_usuario:login')
 def registrar_productos(request):
     nuevo_producto = None
     if request.method == 'POST':
