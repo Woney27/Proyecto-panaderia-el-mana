@@ -117,6 +117,7 @@ li.logo_menu img{
 
 .dropdown-content {
     max-height: 0;
+    height: 100%;
     overflow: hidden;
     position: absolute;
     background-color: #f9f9f9;
@@ -126,8 +127,11 @@ li.logo_menu img{
 }
 
 .dropdown-content a {
+    height: 1px;
     color: black;
-    padding: 12px 16px;
+    padding: 17px 16px;
+    margin-top: 1px;
+    margin-bottom: 1px;
     text-decoration: none;
     display: block;
     transition: background-color 0.2s ease;

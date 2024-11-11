@@ -1,0 +1,70 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/estilos-reporte.css' %}">
+{% endblock %}
+
+{% block title %}<u>Reportes</u>{% endblock %}
+
+{% block content %}
+<div class="contenedor-principal">
+    <strong><h1><u>Reporte General</u></h1></strong>
+
+    <!-- Sección de ventas -->
+    <div class="reporte-ventas">
+        <h2><u>Ventas</u></h2>
+        <div class="metrica">
+            <strong>Total de Ventas:</strong> <span>{{ total_ventas }}</span>
+        </div>
+        <div class="metrica">
+            <strong>Monto Total de Ventas:</strong> <span>${{ monto_total_ventas }}</span>
+        </div>
+    </div>
+
+    <!-- Sección de empleados y clientes mayoristas -->
+    <div class="reporte-empleados-clientes">
+        <h2><u>Empleados y Clientes Mayoristas</u></h2>
+        <div class="metrica">
+            <strong>Total de Empleados:</strong> <span>{{ total_empleados }}</span>
+        </div>
+        <div class="metrica">
+            <strong>Total de Clientes Mayoristas:</strong> <span>{{ total_clientes_mayoristas }}</span>
+        </div>
+    </div>
+
+    <!-- Sección de productos más vendidos -->
+    <div class="productos-mas-vendidos">
+        <h2><u>Productos Más Vendidos</u></h2>
+        <table>
+            <tr>
+                <th>Producto</th>
+                <th>Total Vendido</th>
+            </tr>
+            {% for producto in productos_mas_vendidos %}
+            <tr>
+                <td>{{ producto.producto__descripcion }}</td>
+                <td>{{ producto.total_vendido }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- Sección de productos faltantes -->
+    <div class="productos-faltantes">
+        <h2><u>Productos Faltantes</u></h2>
+        <table>
+            <tr>
+                <th>Producto</th>
+                <th>Stock Actual</th>
+            </tr>
+            {% for producto in productos_faltantes %}
+            <tr>
+                <td>{{ producto.descripcion }}</td>  
+                <td>{{ producto.cantidad_disponible }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}
