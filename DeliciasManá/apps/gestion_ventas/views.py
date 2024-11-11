@@ -47,8 +47,8 @@ def modificar_cliente(request, cliente_id):
             return redirect('apps.gestion_ventas:mayoristas')  # Redirigir después de guardar, hacia la vista de mayoristas
     else:
         cliente_form = MayoristaForm(instance=cliente)  # Crear el formulario con la instancia existente
-
-    return render(request, 'gestion_ventas/clientes_mayoristas.html', {'form': cliente_form, 'cliente': cliente})
+    mayoristas = ClienteMayorista.objects.all()
+    return render(request, 'gestion_ventas/clientes_mayoristas.html', {'form': cliente_form, 'cliente': cliente, 'mayoristas': mayoristas})
 
 
 def eliminar_cliente(request, cliente_id):
