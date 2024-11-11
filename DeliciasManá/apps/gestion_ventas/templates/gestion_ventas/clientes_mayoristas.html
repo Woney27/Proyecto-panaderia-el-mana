@@ -3,13 +3,13 @@
 {% block head %}
     <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'css/estilos-clientes.css' %}">
-<!--    <script src="{% static 'js/validaciones-clientes.js'%}"></script>-->
 {% endblock %}
 
 {% block title %}<b><u>Gestion de Clientes Mayoristas</u></b>{% endblock %}
 
 {% block content %}
     <div class="grid-container">
+        
         <form class="form-agregar-cliente" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <fieldset>
@@ -43,7 +43,30 @@
 
                 <button type="submit">Agregar Cliente Mayorista</button>
                 <button type="reset">Cancelar</button>
+                    <!-- Mostrar mensajes de éxito o error -->
+                        {% if messages %}
+                        <div class="mensajes">
+                            {% for message in messages %}
+                                <div class="mensaje {% if message.tags %}{{ message.tags }}{% endif %}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+    
+            {% if form.errors %}
+                <div class="error-messages">
+                    <ul class="errorlist">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %} 
             </fieldset>
+
         </form>
 
         <!-- Tabla de clientes -->
@@ -65,7 +88,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for mayorista in mayoristas%}
+                            {% for mayorista in mayoristas %}
                             <tr>
                                 <td>{{ mayorista.id }}</td>
                                 <td>{{ mayorista.razonSocial }}</td>
@@ -80,7 +103,8 @@
                                         <button type="submit" class="boton-eliminar">Eliminar</button>
                                     </form>
                                 </td>
-                                {% empty %}
+                            </tr>
+                            {% empty %}
                             <tr>
                                 <td colspan="7">No hay clientes mayoristas cargados.</td>
                             </tr>
@@ -91,7 +115,31 @@
                 <br>
                 <label for="buscar">Buscar cliente:</label>
                 <input type="text" id="buscar" placeholder="Buscar por Razón Social...">
+
             </fieldset>
+
+    </div> 
         </div>
-    </div>
+
+
+    <script>
+        document.getElementById("buscar").addEventListener("keyup", function() {
+            var filter = this.value.toUpperCase();
+            var table = document.querySelector(".tabla-cliente table");
+            var rows = table.getElementsByTagName("tr");
+
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].getElementsByTagName("td");
+                var razonSocial = cells[1]; 
+                if (razonSocial) {
+                    var textValue = razonSocial.textContent || razonSocial.innerText;
+                    if (textValue.toUpperCase().indexOf(filter) > -1) {
+                        rows[i].style.display = "";
+                    } else {
+                        rows[i].style.display = "none";
+                    }
+                }
+            }
+        });
+    </script>
 {% endblock %}

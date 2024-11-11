@@ -2,7 +2,7 @@
 {% load static %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/estilos-proveedores.css' %}">
-<script src="{% static 'js/validaciones-proveedores.js'%}"></script>
+
 {% endblock %}
 
 {% block title %}<b><u>Gestion de Proveedores</u></b>{% endblock %}
@@ -42,6 +42,28 @@
 
                 <button type="submit">Agregar Proveedor</button>
                 <button type="reset">Cancelar</button>
+                                    <!-- Mostrar mensajes de éxito o error -->
+                                    {% if messages %}
+                                    <div class="mensajes">
+                                        {% for message in messages %}
+                                            <div class="mensaje {% if message.tags %}{{ message.tags }}{% endif %}">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                
+                        {% if form.errors %}
+                            <div class="error-messages">
+                                <ul class="errorlist">
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %} 
             </fieldset>
         </form>
 
@@ -73,8 +95,8 @@
                                 <td>{{ proveedor.telefono }}</td>
                                 <td>{{ proveedor.email }}</td>
                                 <td>
-                                    <a href="{% url 'apps.gestion_proveedores:modificar_proveedor' proveedor.id %}">Modificar</a>
-                                    <form method="POST" action="{% url 'apps.gestion_proveedores:eliminar_proveedor' proveedor.id %}" style="display:inline;">
+                                    <a href="{% url 'gestion_proveedores:modificar_proveedor' proveedor.id %}">Modificar</a>
+                                    <form method="POST" action="{% url 'gestion_proveedores:eliminar_proveedor' proveedor.id %}" style="display:inline;">
                                         {% csrf_token %}
                                         <button type="submit" class="boton-eliminar">Eliminar</button>
                                     </form>
@@ -93,4 +115,32 @@
             </fieldset>
         </div>
     </div>
+    <script>
+            document.getElementById("buscar").addEventListener("keyup", function() {
+        // Obtener el valor de búsqueda
+        var filter = this.value.toUpperCase();
+        
+        // Obtener la tabla y las filas
+        var table = document.querySelector(".tabla-proveedor table");
+        var rows = table.getElementsByTagName("tr");
+
+        // Recorremos todas las filas (excepto la cabecera)
+        for (var i = 1; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName("td");
+            
+            // Verificamos si la Razón Social está en la primera columna (índice 1)
+            var razonSocial = cells[1];  // Segunda columna (index 1) es Razón Social
+            if (razonSocial) {
+                var textValue = razonSocial.textContent || razonSocial.innerText;
+                
+                // Si la Razón Social coincide con lo que se escribe, mostramos la fila
+                if (textValue.toUpperCase().indexOf(filter) > -1) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    });
+    </script>
 {% endblock %}
