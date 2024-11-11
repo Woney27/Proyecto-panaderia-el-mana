@@ -1,30 +1,28 @@
 from django.contrib import admin
-from apps.gestion_empleados.models import Empleado
-from apps.gestion_ventas.models import Venta, Item, ClienteMayorista
-from apps.gestion_productos.models import Producto
+from django.contrib.auth.admin import UserAdmin
+from apps.gestion_usuario.models import Usuario
+from apps.gestion_usuario.forms import UsuarioForm
 
 
-@admin.register(Empleado)
-class EmpleadoAdmin(admin.ModelAdmin):
-    list_display = ['cuit', 'nombre', 'telefono', 'domicilio', 'estado', 'cargo']
+@admin.register(Usuario)
+class UsuarioAdmin(UserAdmin):
+    add_form = UsuarioForm
 
+    # Definición de fieldsets personalizados, sin incluir `usable_password`
+    fieldsets = (
+        (None, {'fields': ('username', 'password')}),
+        ('Información Personal', {'fields': ('first_name', 'last_name', 'email', 'cuil', 'domicilio')}),
+        ('Permisos', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
+        ('Fechas Importantes', {'fields': ('last_login', 'date_joined')}),
+    )
 
-@admin.register(Venta)
-class VentaAdmin(admin.ModelAdmin):
-    list_display = ['fechaVenta', 'nroComprobante', 'tipoCliente', 'montoTotal']
+    # Definición de add_fieldsets personalizada para la creación de usuarios
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('username', 'cuil', 'domicilio', 'password1', 'password2'),
+        }),
+    )
 
-
-@admin.register(Item)
-class ItemAdmin(admin.ModelAdmin):
-    list_display = ['venta', 'producto', 'cantidadProducto', 'precioItem']
-
-
-@admin.register(ClienteMayorista)
-class ClienteMayoristaAdmin(admin.ModelAdmin):
-    list_display = ['razonSocial', 'cuit', 'telefono', 'domicilio']
-
-
-@admin.register(Producto)
-class ProductoAdmin(admin.ModelAdmin):
-    list_display = ['descripcion', 'unidad_medida', 'cantidad_disponible', 'precio_unidad']
-
+    search_fields = ('username', 'email', 'cuil')
+    list_display = ('username', 'email', 'cuil')

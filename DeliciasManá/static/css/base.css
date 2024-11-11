@@ -140,3 +140,40 @@ li.logo_menu img{
 .dropdown:hover .dropdown-content {
     max-height: 300px;
 }
+
+
+.login{
+    background-color: #f0eded;
+    border-radius: 15px;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+    display:block;
+    padding: 5px;
+    width: 150px;
+    margin-top: 15px;
+    margin-left: 10px;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    font-weight: bold
+}
+
+.username{
+    background-color: #f0eded;
+    border-radius: 15px;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+    display: block;
+    padding: 5px;
+    width: 220px;
+    margin-top: 15px;
+    margin-left: 10px;
+    text-align: center;
+    color: black;
+}
+
+.username a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin-left:5px;
+
+}

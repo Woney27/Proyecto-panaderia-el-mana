@@ -11,6 +11,7 @@ urlpatterns = [
     path('gestion_insumos', include('apps.gestion_insumos.urls')),
     path('gestion_ventas/', include('apps.gestion_ventas.urls')),
     path('gestion_empleados/', include('apps.gestion_empleados.urls')),
+    path('usuarios/', include('apps.gestion_usuario.urls')),
     path('', TemplateView.as_view(template_name='base/PaginaPortada.html'), name='home'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
