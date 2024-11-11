@@ -3,7 +3,8 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/estilos-empleados.css' %}">
-    <script src="{% static 'js/validaciones-empleados.js' %}"></script>
+    <script href="{% static 'js/validaciones-empleados.js'%}"></script>
+
 {% endblock %}
 {% block title %} <u><b>Registrar Empleados</b></u> {% endblock %}
 {% block content %}
@@ -77,6 +78,7 @@
                                     <th>Estado</th>
                                     <th>Fecha ingreso</th>
                                     <th>Telefono</th>
+                                    <th>Editar/Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -89,6 +91,13 @@
                                     <td>{{ empleado.estado }}</td>
                                     <td>{{ empleado.fecha_ingreso }}</td>
                                     <td>{{ empleado.telefono }}</td>
+                                    <td>
+                                        <a href="{% url 'apps.gestion_empleados:modificar_empleado' empleado.id %}">Modificar</a>
+                                        <form method="POST" action="{% url 'apps.gestion_empleados:eliminar_empleado' empleado.id %}" style="display:inline;">
+                                            {% csrf_token %}
+                                            <button type="submit" class="boton-eliminar">Eliminar</button>
+                                        </form>
+                                    </td>                                    
                                 </tr>
                                 {% empty %}
                                 <tr>
