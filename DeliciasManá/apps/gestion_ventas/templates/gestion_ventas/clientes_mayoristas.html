@@ -61,20 +61,26 @@
                                 <th>Domicilio Fiscal</th>
                                 <th>Telefono</th>
                                 <th>Correo</th>
-                                <th>Modificar</th>
+                                <th>Editar/Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for mayorista in mayoristas%}
-                             <tr>
+                            <tr>
                                 <td>{{ mayorista.id }}</td>
                                 <td>{{ mayorista.razonSocial }}</td>
                                 <td>{{ mayorista.cuit }}</td>
                                 <td>{{ mayorista.domicilio }}</td>
                                 <td>{{ mayorista.telefono }}</td>
                                 <td>{{ mayorista.email }}</td>
-                            </tr>
-                            {% empty %}
+                                <td>
+                                    <a href="{% url 'apps.gestion_ventas:modificar_cliente' mayorista.id %}">Modificar</a>
+                                    <form method="POST" action="{% url 'apps.gestion_ventas:eliminar_cliente' mayorista.id %}" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="boton-eliminar">Eliminar</button>
+                                    </form>
+                                </td>
+                                {% empty %}
                             <tr>
                                 <td colspan="7">No hay clientes mayoristas cargados.</td>
                             </tr>
