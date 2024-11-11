@@ -1,0 +1,59 @@
+{% extends 'base/base.html'%}
+{% load static %}
+{% block head %}
+    <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos-venta.css' %}">
+{% endblock %}
+
+
+{% block title %}<b><u>Registrar Venta</u></b>{% endblock %}
+
+
+{% block content %}
+    <main>
+        <h3><a href="/gestion_ventas/lista_ventas">Listado Ventas</a></h3>
+        <div class="contenedor-principal-detalles">
+            <div class="main-content">
+                <!-- Columna izquierda: Datos predefinidos y datos del producto -->
+                <section class="formulario">
+                    <div class="cuadro-datos datos-predefinidos">
+                        <h3><u>Detalle de Venta #{{ venta.id }}<b></b></u></h3><br>
+                            <p><strong>Fecha de Registro:</strong> {{ venta.fechaVenta}}</p>
+                            <p><strong>Tipo Cliente:</strong> {{ venta.tipoCliente }}</p>
+                            <p><strong>N°Comprobante:</strong> {{ venta.nroComprobante }}</p>
+                            <p><strong>Forma de Pago:</strong> {{ venta.formaPago }}</p>
+                            <p><strong>Monto Total:</strong> {{ venta.montoTotal }}</p>
+                            <p><strong>Empleado:</strong> {{ venta.empleado }}</p>
+                    </div>
+                </section>
+
+                <section class="tabla-productos">
+                    <div class="cuadro-tabla">
+                        <h3><u><b>Detalle</b></u></h3><br>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Unidad de medida</th>
+                                    <th>Cantidad</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in items %}
+                                    <tr>
+                                        <td>{{ item.producto.descripcion }}</td>
+                                        <td>{{ item.producto.unidad_medida }}</td>
+                                        <td>{{ item.cantidad }}</td>
+                                        <td>{{ item.precioItem }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+{% endblock %}

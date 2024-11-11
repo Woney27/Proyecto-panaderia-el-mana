@@ -1,0 +1,64 @@
+{% extends 'base/base.html'%}
+{% load static %}
+{% block head %}
+    <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos-venta.css' %}">
+{% endblock %}
+
+
+{% block title %}<b><u>Listado de Ventas</u></b>{% endblock %}
+
+
+{% block content %}
+    <main>
+        <h3><a href="/gestion_ventas/ventas">Registrar Venta</a></h3>
+        <div class="contenedor-principal-ventas">
+            <div class="main-content">
+                <section class="tabla-productos">
+                    <div class="cuadro-tabla">
+                        <h3><u><b>Detalles</b></u></h3><br>
+                        <table>
+                            <thead>
+                                <tr class="fila-tabla">
+                                    <th>ID</th>
+                                    <th>Fecha</th>
+                                    <th>Tipo de cliente</th>
+                                    <th>N°Comprobante</th>
+                                    <th>Monto total</th>
+                                    <th>Empleado</th>
+                                    <th>Detalle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for venta in ventas %}
+                                    <tr>
+                                        <td> {{ venta.id }}</td>
+                                        <td>{{ venta.fechaVenta }}</td>
+                                        <td>{{ venta.tipoCliente }}</td>
+                                        <td>{{ venta.nroComprobante }}</td>
+                                        <td>{{ venta.montoTotal }}</td>
+                                        <td>{{ venta.empleado }}</td>
+                                        <td>
+                                              <a href="{% url 'apps.gestion_ventas:detalle_venta' venta.id %}" class="btn btn-info">Ver Detalle</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                       <!-- <div class="total-pagar">
+                            <span>TOTAL A PAGAR</span>
+                            <input type="text" id="campo-input" disabled>
+                        </div>
+
+                        <div class="acciones-tabla">
+                            <button type="button">Cancelar</button>
+                            <button type="submit">Registrar</button>
+                        </div>-->
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+{% endblock %}

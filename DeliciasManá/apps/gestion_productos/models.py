@@ -20,9 +20,8 @@ class Producto(models.Model):
     punto_reposicion = models.PositiveIntegerField(default=0)
     categoria = models.CharField(max_length=50, choices=CATEGORIA_CHOICES)
 
-    def _str_(self):
-        return f"{self.descripcion} - {self.categoria} - {self.unidad_medida}"
-
+    def __str__(self):
+        return f"{self.descripcion} - {self.categoria}"
 
     class Meta:
         verbose_name = "Producto"
