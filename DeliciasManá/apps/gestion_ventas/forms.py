@@ -6,21 +6,33 @@ from .models import Venta, Item, ClienteMayorista
 class VentaForm(forms.ModelForm):
     class Meta:
         model = Venta
-        fields = ['nroComprobante', 'tipoCliente', 'formaPago', 'montoTotal']
+        fields = ['empleado', 'nroComprobante', 'tipoCliente', 'formaPago', 'montoTotal']
+
+    def init(self, *args, **kwargs):
+        super(VentaForm, self).__init__(*args, **kwargs)
+        self.fields['empleado'].widget.attrs.update({'class': 'cuadro-datos datos-predefinidos'})
+        self.fields['nroComprobante'].widget.attrs.update({'class': 'cuadro-datos datos-predefinidos'})
+        self.fields['tipoCliente'].widget.attrs.update({'class': 'cuadro-datos datos-predefinidos'})
+        self.fields['montoTotal'].widget.attrs.update({'class': 'cuadro-datos datos-predefinidos'})
 
 
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ['producto', 'precioItem', 'cantidadProducto']
+        fields = ['producto', 'cantidad']
+
+    def init(self, *args, **kwargs):
+        super(ItemForm, self).__init__(*args, **kwargs)
+        self.fields['producto'].widget.attrs.update({'class': 'cuadro-datos'})
+        self.fields['cantidad'].widget.attrs.update({'class': 'cuadro-datos'})
 
 
 ItemFormSet = inlineformset_factory(
     Venta,
     Item,
     form=ItemForm,
-    extra=1,
-    can_delete=True
+    extra=1,  # Número de formularios vacíos
+    can_delete=True  # Permite eliminar secciones
 )
 
 

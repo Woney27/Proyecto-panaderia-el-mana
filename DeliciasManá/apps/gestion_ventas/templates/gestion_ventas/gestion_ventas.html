@@ -3,6 +3,56 @@
 {% block head %}
     <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'css/estilos-venta.css' %}">
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const formsetContainer = document.getElementById('formset-container');
+        const addFormButton = document.getElementById('add-form');
+
+        // Verifica si el management form está presente
+        const totalFormsInput = document.getElementById('id_items-TOTAL_FORMS');
+        if (!totalFormsInput) {
+            console.error("El management form no está presente en el HTML.");
+            return;
+        }
+
+        // Número total de formularios actualmente en el formset
+        let formCount = parseInt(totalFormsInput.value);
+
+        addFormButton.addEventListener('click', function() {
+            // Clona el último formulario del formset
+            const newForm = formsetContainer.children[0].cloneNode(true);
+
+            // Actualiza los nombres y los índices de los campos en el formulario clonado
+            Array.from(newForm.querySelectorAll('input, select, label')).forEach(element => {
+                if (element.name) {
+                    // Reemplaza el índice anterior por el nuevo índice basado en formCount
+                    element.name = element.name.replace(/items-(\d+)-/, `items-${formCount}-`);
+                }
+                if (element.id) {
+                    element.id = element.id.replace(/id_items-(\d+)-/, `id_items-${formCount}-`);
+                }
+                // Limpia los valores de los campos clonados
+                if (element.tagName === 'INPUT') {
+                    element.value = '';
+                } else if (element.tagName === 'SELECT') {
+                    element.selectedIndex = 0;
+                }
+                if (element.tagName === 'LABEL') {
+                    element.htmlFor = element.htmlFor.replace(/id_items-(\d+)-/, `id_items-${formCount}-`);
+                }
+            });
+
+            // Agrega el nuevo formulario al contenedor de formularios
+            formsetContainer.appendChild(newForm);
+
+            // Incrementa el número total de formularios en el formset
+            formCount++;
+            totalFormsInput.value = formCount;
+        });
+    });
+</script>
+
+
 {% endblock %}
 
 
@@ -11,6 +61,7 @@
 
 {% block content %}
     <main>
+        <h3><a href="/gestion_ventas/lista_ventas">Listado Ventas</a></h3>
         <div class="contenedor-principal">
             <div class="main-content">
                 <!-- Columna izquierda: Datos predefinidos y datos del producto -->
@@ -18,101 +69,49 @@
                     <div class="cuadro-datos datos-predefinidos">
                         <h3><u>Datos Predefinidos<b></b></u></h3><br>
                         <form method="POST">
+                            {% csrf_token %}
                             <div class="fila">
                                 <div class="campo">
-                                    <label for="venta-num">Venta N°</label>
-                                    <input type="text" id="venta-num" value="1" disabled>
-                                </div>
-                                <div class="campo">
-                                    <label for="fecha">Fecha</label>
-                                    <input type="text" id="fecha" placeholder="dd/mm/aaaa" disabled>
-                                </div>
-                                <div class="campo">
-                                    <label for="vendedor">ID Vendedor</label>
-                                    <input type="text" id="vendedor" disabled>
+                                    {{ form.empleado.label_tag }}
+                                    {{ form.empleado }}
                                 </div>
                             </div>
                             <div class="fila">
                                 <div class="campo">
-                                    <label for="comprobante">N° Comprobante</label>
-                                    <input type="text" id="comprobante" disabled>
+                                    {{ form.nroComprobante.label_tag }}
+                                    {{ form.nroComprobante }}
                                 </div>
                                 <div class="campo">
-                                    <label for="cliente">Tipo de cliente</label>
-                                    <select id="cliente">
-                                        <option value="Minorista">Minorista</option>
-                                        <option value="Mayorista">Mayoristas</option>
-                                    </select>
+                                    {{ form.tipoCliente.label_tag }}
+                                    {{ form.tipoCliente }}
                                 </div>
                             </div>
                             <div class="fila">
                                 <div class="campo">
-                                    <label for="pago">Forma de pago</label>
-                                    <select id="pago">
-                                        <option value="Efectivo">Efectivo</option>
-                                        <option value="Tarjeta">Tarjeta</option>
-                                        <option value="Transferencia">Transferencia</option>
-                                    </select>
+                                    {{ form.formaPago.label_tag }}
+                                    {{ form.formaPago }}
                                 </div>
                             </div>
-                        </form>
-                    </div>
 
-                    <div class="cuadro-datos">
-                        <h3><u><b>Datos del Producto</b></u></h3><br>
-                        <form method="POST">
-                            <div class="fila">
-                                <div class="campo">
-                                    <label for="producto">Producto</label>
-                                    <input type="text" placeholder="Ingrese la descripción.." id="producto">
+                            <div class="cuadro-datos">
+                                <h3><u><b>Datos del Producto</b></u></h3><br>
+                                {{ formset.management_form }}
+                                <div id="formset-container">
+                                    {% for form in formset %}
+                                        <div class="form-item">
+                                            {{ form.as_p }}
+                                            <p></p>
+                                        </div>
+                                    {% endfor %}
                                 </div>
-                                <div class="campo">
-                                    <label for="precio">Precio / unidad</label>
-                                    <input type="number" id="precio" min="0.01" step="0.01" placeholder="precio por unidad.." required>
-                                </div>
-                                <div class="campo">
-                                    <label for="cantidad">Cantidad</label>
-                                    <input type="number" id="cantidad" min="1" placeholder="Ingrese la cantidad.." required>
-                                </div>
+                                <button type="button" id="add-form" >Agregar Item</button>
                             </div>
-                            <button type="button" id="agregar-btn">Agregar</button>
-
-                        </form>
-                    </div>
-                </section>
-
-                <!-- Columna derecha: Tabla de productos y botones -->
-                <section class="tabla-productos">
-                    <div class="cuadro-tabla">
-                        <h3><u><b>Detalles</b></u></h3><br>
-                        <table>
-                            <thead>
-                                <tr class="fila-tabla">
-                                    <th>ID</th>
-                                    <th>Producto</th>
-                                    <th>Categoría</th>
-                                    <th>Cantidad</th>
-                                    <th>Precio / unidad</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Filas generadas dinámicamente -->
-                            </tbody>
-                        </table>
-
-                        <div class="total-pagar">
-                            <span>TOTAL A PAGAR</span>
-                            <input type="text" id="campo-input" disabled>
-                        </div>
-
-                        <div class="acciones-tabla">
-                            <button type="button">Cancelar</button>
+                            <br>
                             <button type="submit">Registrar</button>
-                        </div>
+                            <button type="reset">Cancelar</button>
+                        </form>
                     </div>
                 </section>
-
             </div>
         </div>
     </main>
