@@ -181,3 +181,25 @@ li.logo_menu img{
     margin-left:5px;
 
 }
+
+button {
+    background-color: #ffa500;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 48%; /* Ajusta el ancho de cada botón */
+    display: inline-block;
+}
+
+button:hover {
+    background-color: #e69500;
+}
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}

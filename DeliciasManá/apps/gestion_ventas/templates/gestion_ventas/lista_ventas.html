@@ -10,8 +10,8 @@
 
 
 {% block content %}
-    <main>
-        <h3><a href="/gestion_ventas/ventas">Registrar Venta</a></h3>
+    <main><br>
+        <h3><a href="/gestion_ventas/ventas"  class="Listado-enlace">Registrar Venta</a></h3>
         <div class="contenedor-principal-ventas">
             <div class="main-content">
                 <section class="tabla-productos">
@@ -39,7 +39,7 @@
                                         <td>{{ venta.montoTotal }}</td>
                                         <td>{{ venta.empleado }}</td>
                                         <td>
-                                              <a href="{% url 'apps.gestion_ventas:detalle_venta' venta.id %}" class="btn btn-info">Ver Detalle</a>
+                                            <a href="{% url 'apps.gestion_ventas:detalle_venta' venta.id %}"><button>Ver Detalle</button></a>  
                                         </td>
                                     </tr>
                                 {% endfor %}

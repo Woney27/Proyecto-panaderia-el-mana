@@ -15,10 +15,11 @@ def reporte(request):
         total_clientes_mayoristas = ClienteMayorista.objects.count()
 
         # Productos más vendidos
+        
         productos_mas_vendidos = (
             Item.objects
             .values('producto__descripcion')
-            .annotate(total_vendido=Sum('cantidadProducto'))
+            .annotate(total_vendido=Sum('cantidad'))
             .order_by('-total_vendido')[:5]
         )
 

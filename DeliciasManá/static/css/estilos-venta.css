@@ -25,6 +25,24 @@ header {
     justify-content: space-between;
     gap: 20px;
 }
+.Listado-enlace {
+    display: inline-block;
+    margin-left: center;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #8b4513; /* Azul resaltante */
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Cambios al pasar el cursor */
+.Listado-enlace:hover {
+    background-color: #64320e; /* Azul más oscuro */
+    transform: scale(1.1); /* Aumenta el tamaño */
+}
 
 h3 a{
     color:black;

@@ -79,7 +79,7 @@
                                 <td>{{ producto.unidad_medida }}</td>
                                 <td>{{ producto.precio_unidad }}</td>
                                 <td>
-                                    <a href="{% url 'apps.gestion_productos:modificar_producto' producto.id %}" >Modificar</a>
+                                    <a href="{% url 'apps.gestion_productos:modificar_producto' producto.id %}" > <button type="submit" class="boton-modificar">Modificar</button></a>
                                     <form method="POST" action="{% url 'apps.gestion_productos:eliminar_producto' producto.id %}" style="display:inline;">
                                         {% csrf_token %}
                                             <button type="submit" class="boton-eliminar">Eliminar</button>

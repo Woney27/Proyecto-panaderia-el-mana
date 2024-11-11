@@ -92,7 +92,7 @@
                                     <td>{{ empleado.fecha_ingreso }}</td>
                                     <td>{{ empleado.telefono }}</td>
                                     <td>
-                                        <a href="{% url 'apps.gestion_empleados:modificar_empleado' empleado.id %}">Modificar</a>
+                                        <a href="{% url 'apps.gestion_empleados:modificar_empleado' empleado.id %}"><button>Modificar</button></a>
                                         <form method="POST" action="{% url 'apps.gestion_empleados:eliminar_empleado' empleado.id %}" style="display:inline;">
                                             {% csrf_token %}
                                             <button type="submit" class="boton-eliminar">Eliminar</button>
