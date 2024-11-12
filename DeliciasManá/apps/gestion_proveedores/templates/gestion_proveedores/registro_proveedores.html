@@ -42,28 +42,6 @@
 
                 <button type="submit">Agregar</button>
                 <button type="reset">Cancelar</button>
-                                    <!-- Mostrar mensajes de éxito o error -->
-                                    {% if messages %}
-                                    <div class="mensajes">
-                                        {% for message in messages %}
-                                            <div class="mensaje {% if message.tags %}{{ message.tags }}{% endif %}">
-                                                {{ message }}
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                
-                        {% if form.errors %}
-                            <div class="error-messages">
-                                <ul class="errorlist">
-                                    {% for field in form %}
-                                        {% for error in field.errors %}
-                                            <li>{{ error }}</li>
-                                        {% endfor %}
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        {% endif %} 
             </fieldset>
         </form>
 
